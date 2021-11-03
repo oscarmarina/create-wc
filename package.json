@@ -1,0 +1,60 @@
+{
+  "name": "@blockquote/create-wc",
+  "version": "1.0.0",
+  "keywords": [
+    "LitElement",
+    "web-component",
+    "sass",
+    "scaffold",
+    "vite",
+    "openwc",
+    "generator"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Web component with Lit scaffolding - Extending Open Web Component",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oscarmarina/create.git"
+  },
+  "homepage": "https://github.com/oscarmarina/create",
+  "author": "Oscar Marina",
+  "bin": {
+    "create-blockquote-wc": "./src/create.js"
+  },
+  "scripts": {
+    "start": "node ./src/create.js",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint --ext .js,.mjs,.cjs .",
+    "lint:prettier": "prettier \"**/*.{js,mjs,cjs,md.json}\" --check --ignore-path .eslintignore",
+    "format": "eslint --ext .ts,.js,.mjs,.cjs  --fix && prettier \"**/*.{ts,js,mjs,cjs,md}\" --check --ignore-path .eslintignore --write"
+  },
+  "files": [
+    "/src/"
+  ],
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "@open-wc/create": "^0.37.95",
+    "chalk": "^4.1.0",
+    "command-line-args": "^5.1.1",
+    "prompts": "^2.4.1",
+    "semver": "^7.3.5"
+  },
+  "devDependencies": {
+    "@open-wc/eslint-config": "^4.2.0",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "prettier": "^2.2.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "always",
+    "printWidth": 100,
+    "trailingComma": "all"
+  }
+}

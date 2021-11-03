@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@open-wc/testing": "next"
+  }
+}

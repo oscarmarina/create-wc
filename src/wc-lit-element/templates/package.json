@@ -1,0 +1,23 @@
+{
+  "main": "index.js",
+  "module": "index.js",
+  "files": [
+    "/define/",
+    "/src/",
+    "index.js",
+    "!**/*.scss"
+  ],
+  "scripts": {
+    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
+    "sass:watch": "sass-style-template",
+    "vite": "vite"
+  },
+  "dependencies": {
+    "lit": "^2.0.2"
+  },
+  "devDependencies": {
+    "vite": "^2.6.7",
+    "@web/dev-server": "^0.1.25"
+
+  }
+}

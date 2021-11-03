@@ -1,0 +1,35 @@
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+*-debug.log
+
+## testing
+/coverage/
+**/coverage/
+__snapshots__
+
+## temp folders
+/.tmp/
+
+## build
+*.config.js
+/_site/
+/dist/
+/build/
+/out-tsc/
+
+storybook-static
+
+/packages/*/package-lock.json
+/packages/*/Jenkinsfile
+/packages/*/build
+/packages/*/node_modules
+/packages/*/.editorconfig
+/packages/*/.gitignore
