@@ -1,5 +1,5 @@
 {
-  "name": "<%= tagName %>",
+  "name": "<%= nameSpace %><%= tagName %>",
   "version": "1.0.0-rc.1",
   "description": "Webcomponent <%= tagName %> following open-wc recommendations",
   "keywords": [

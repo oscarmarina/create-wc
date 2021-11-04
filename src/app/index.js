@@ -1,26 +1,11 @@
 /* eslint-disable no-console */
 import prompts from 'prompts';
-import commandLineArgs from 'command-line-args';
+// import commandLineArgs from 'command-line-args';
 import { executeMixinGenerator } from '@open-wc/create/dist/core.js';
 
 import header from './header.js';
 import { gatherMixins } from './gatherMixins.js';
 import Generator from '../Generator.js';
-
-/**
- * Allows to control the data via command line
- *
- * example:
- * npm init code-workshop-kit --type python --writeToDisk true
- */
-const optionDefinitions = [
-  { name: 'destinationPath', type: String },
-  { name: 'type', type: String },
-  { name: 'tagName', type: String },
-  { name: 'writeToDisk', type: String },
-];
-const overrides = commandLineArgs(optionDefinitions);
-prompts.override(overrides);
 
 export const AppMixin = (subclass) =>
   // eslint-disable-next-line no-shadow
@@ -39,10 +24,27 @@ export const AppMixin = (subclass) =>
           type: 'text',
           name: 'tagName',
           message: 'What is the tag name of your web component',
-          typeLabel: '{underline string}',
           validate: (tagName) =>
             !/^([a-z])(?!.*[<>])(?=.*-).+$/.test(tagName)
               ? 'You need a minimum of two lowercase words separated by dashes (e.g. foo-bar)'
+              : true,
+        },
+        {
+          type: 'select',
+          name: 'nameSpaceSelect',
+          message: 'Would you like to use namespace (without @)?',
+          choices: [
+            { title: 'Yes', value: 'true' },
+            { title: 'No', value: 'false' },
+          ],
+        },
+        {
+          type: (prev, all) => (all.nameSpaceSelect === 'true' ? 'text' : null),
+          name: 'nameSpace',
+          message: 'What is the namespace of your web component',
+          validate: (nameSpace) =>
+            /^[@]/.test(nameSpace)
+              ? 'Without @'
               : true,
         },
       ];

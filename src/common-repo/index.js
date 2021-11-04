@@ -11,6 +11,7 @@ export const CommonRepoMixin = (subclass) =>
         ...this.templateData,
         scriptRunCommand: this.options.installDependencies === 'yarn' ? 'yarn' : 'npm run',
         year: new Date().getFullYear(),
+        nameSpace: this.options.nameSpace ? `@${this.options.nameSpace}/` : '',
       };
 
       await super.execute();
