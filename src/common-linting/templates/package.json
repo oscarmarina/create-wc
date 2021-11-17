@@ -1,0 +1,41 @@
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,html}": [
+      "npm run format"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "prettier",
+      "@open-wc"
+    ],
+    "rules": {
+      "import/no-unresolved": "off",
+      "class-methods-use-this": "off",
+      "object-curly-newline": "off",
+      "import/extensions": ["error", "always", { "ignorePackages": true }]
+    }
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "scripts": {
+    "format": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --fix --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
+    "lint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "@open-wc/eslint-config": "^7.0.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^12.0.0",
+    "prettier": "^2.4.1",
+    "eslint-config-prettier": "^8.3.0"
+  }
+}

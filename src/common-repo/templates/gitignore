@@ -22,6 +22,7 @@ __snapshots__
 *.config.js
 /_site/
 /dist/
+/dev/
 /build/
 /out-tsc/
 

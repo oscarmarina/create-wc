@@ -1,0 +1,24 @@
+{
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "/dist/",
+    "/dist/index.*",
+    "!/dist/test/"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./<%= tagName %>.js": "./dist/define/<%= tagName %>.js"
+  },
+  "scripts": {
+    "start:wds": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"npm:sass:watch\" \"npm:wds\"",
+    "wds": "web-dev-server",
+    "sass:watch": "sass-style-template -j ts",
+    "build": "npm run build:tsc && npm run dev:vite",
+    "build:tsc": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "tslib": "^2.3.1"
+  }
+}

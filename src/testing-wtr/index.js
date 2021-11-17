@@ -14,6 +14,6 @@ export const TestingWebTestRunnerMixin = (subclass) =>
         this.destinationPath('package.json'),
       );
 
-      await this.copyTemplates(`${__dirname}/templates/static/**/*`);
+      // await this.copyTemplates(`${__dirname}/templates/static/**/*`);
     }
   };

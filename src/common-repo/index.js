@@ -15,10 +15,17 @@ export const CommonRepoMixin = (subclass) =>
       };
 
       await super.execute();
+      const { className } = this.templateData;
 
       this.copyTemplateJsonInto(
         `${__dirname}/templates/package.json`,
         this.destinationPath('package.json'),
+      );
+
+       // write & rename el scss template
+       this.copyTemplate(
+        `${__dirname}/templates/styles/MyEl.scss`,
+        this.destinationPath(`src/styles/${className}.scss`),
       );
 
       // write and rename .gitignore
