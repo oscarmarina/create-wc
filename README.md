@@ -1,4 +1,4 @@
-# Web Component with Lit project scaffolding
+# Web Component with Lit - Scaffolding
 
 This scaffold generator extends and customizes the core parts of [@open-wc/create](https://open-wc.org/docs/development/generator/#extending) providing a starting point for creating a web component with [Lit](https://lit.dev/).
 
@@ -14,11 +14,16 @@ This scaffold generator extends and customizes the core parts of [@open-wc/creat
 - ### [vitejs](https://vitejs.dev/)
 
   - Dev Server
-  - Optimized Build
+  - Static demo
   - TypeScript
 
 - ### [sass](https://github.com/oscarmarina/sass-style-template)
   - SCSS watcher with autoprefixer
+
+- ### miscellany
+  - [tsconfig](https://github.com/lit/lit/blob/main/packages/lit-starter-ts/tsconfig.json)
+  - [Custom Elements Manifest](https://custom-elements-manifest.open-wc.org/blog/intro/)
+  - [ESLint 8 - decorators](https://github.com/eslint/eslint/issues/15299#issuecomment-968099681)
 
 <hr>
 
@@ -61,12 +66,23 @@ npm run format
 import { defaultReporter } from '@web/test-runner';
 import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
 
-export default {
-  reporters: [defaultReporter(), mochaStyleReporter()],
+const outDir = process.env.OUTDIR || '.';
+
+export default ({
+  files: [`${outDir}/test/**/*.test.js`],
+
+  nodeResolve: {
+    exportConditions: ['browser', 'development'],
+  },
+
+  reporters: [
+    defaultReporter(),
+    mochaStyleReporter(),
+  ],
 
   coverageConfig: {
     report: true,
-    reportDir: 'test/coverage',
+    reportDir: `${outDir}/test/coverage`,
     threshold: {
       statements: 80,
       branches: 80,
@@ -80,6 +96,8 @@ export default {
       ui: 'tdd',
     },
   },
+
+  ...
 };
 ```
 
@@ -102,20 +120,22 @@ npm run test:watch
 
 ### dev server
 
+- Vite supports importing .ts files out of the box ([4848](https://github.com/vitejs/vite/issues/4848), [3040](https://github.com/vitejs/vite/issues/3040#issuecomment-940697809))
+
 ```bash
 npm run vite
 ```
 
-### build command
-
+### For hosting a static demo purposes only - [Do not bundle](https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm/#do-not-bundle)
 
 ```bash
-npm run vite-build
+npm run dev:vite
 ```
-- [vitejs - server static-deploy](https://vitejs.dev/guide/static-deploy.html)
+
+### [server static-deploy](https://vitejs.dev/guide/static-deploy.html)
 
 ```bash
-npm run vite-previes
+npm run preview:vite
 ```
 
 <hr>
@@ -131,7 +151,6 @@ npm run sass:watch
 
 <hr>
 <br>
-<br>
 
 ### Start:
 
@@ -142,42 +161,14 @@ npm start
 ```
 
 <hr>
-
-## scripts - package.json
-
-```json
-"scripts": {
-    "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
-    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "postinstall": "npm run sort:package",
-    "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "openwc": "web-dev-server",
-    "sass:watch": "sass-style-template",
-    "sort:package": "npx sort-package-json",
-    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start:openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch",
-    "vite": "vite",
-    "vite-build": "vite build",
-    "vite-preview": "vite preview",
-    "wca": "wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --visibility private --outFile custom-elements-wca.json && wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --outFile README.md"
-  },
-```
-
-<hr>
 <br>
 
 ## Different major versions:
-
-blockquote scaffold
 
 ```json
 "devDependencies": {
   "eslint": "^8.0.0",
   "@open-wc/eslint-config": "^7.0.0",
-  "husky": "^7.0.0",
-  "lint-staged": "^11.0.0",
   ...
 }
 
@@ -189,8 +180,6 @@ open-wc scaffold
 "devDependencies": {
   "eslint": "^7.32.0",
   "@open-wc/eslint-config": "^4.3.0",
-  "husky": "^4.3.8",
-  "lint-staged": "^10.5.4",
   ...
 }
 
@@ -198,26 +187,26 @@ open-wc scaffold
 
 <hr>
 
-## File structure
+## File structure JS & TS
 
 ```css
 ./
 ├── my-el/
 │   ├── define/
-│   │   └── my-el.js
+│   │   └── my-el.{js,ts}
 │   ├── demo/
 │   │   └── index.html
 │   ├── src/
 │   │   ├── styles/
-│   │   │   ├── MyEl-styles.js
+│   │   │   ├── MyEl-styles.{js,ts}
 │   │   │   └── MyEl.scss
-│   │   └── MyEl.js
+│   │   └── MyEl.{js,ts}
 │   ├── test/
-│   │   └── my-el.test.js
+│   │   └── my-el.test.{js,ts}
 │   ├── .editorconfig
 │   ├── .gitignore
 │   ├── index.html
-│   ├── index.js
+│   ├── index.{js,ts}
 │   ├── LICENSE
 │   ├── package.json
 │   ├── README.md
@@ -226,15 +215,12 @@ open-wc scaffold
 │   └── web-test-runner.config.mjs
 ```
 
+<hr>
+
 ### the component definition is generated in its own folder
 ```css
 ./
 ├── my-el/
 │   ├── define/
-│   │   └── my-el.js
-```
-```js
-import { MyEl } from '../src/MyEl.js';
-
-customElements.define(MyEl.is, MyEl);
+│   │   └── my-el.{js,ts}
 ```

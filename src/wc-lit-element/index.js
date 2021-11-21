@@ -38,12 +38,6 @@ export const WcLitElementMixin = (subclass) =>
         this.destinationPath(`src/${className}.js`),
       );
 
-      // write & rename el scss template
-      this.copyTemplate(
-        `${__dirname}/templates/styles/MyEl.scss`,
-        this.destinationPath(`src/styles/${className}.scss`),
-      );
-
       // write & rename el styles template
       this.copyTemplate(
         `${__dirname}/templates/styles/MyEl-styles.js`,

@@ -1,9 +1,6 @@
 {
   "scripts": {
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch"
-  },
-  "devDependencies": {
-    "@web/test-runner": "^0.13.20"
+    "test": "wtr --coverage",
+    "test:watch": "wtr --watch"
   }
 }

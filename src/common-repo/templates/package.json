@@ -4,39 +4,40 @@
   "description": "Webcomponent <%= tagName %> following open-wc recommendations",
   "keywords": [
     "lit",
-    "web-component"
+    "web-component",
+    "lit-element"
   ],
   "author": "<%= tagName %>",
   "license": "MIT",
   "customElements": "custom-elements.json",
   "scripts": {
-    "start:openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
-    "openwc": "web-dev-server",
-    "vite-build": "vite build",
-    "vite-preview": "vite preview",
+    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
+    "vite": "vite",
+    "dev:vite": "vite build",
+    "preview:vite": "vite preview",
     "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
-    "wca": "wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --visibility private --outFile custom-elements-wca.json && wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --outFile README.md",
-    "sort:package" : "npx sort-package-json",
+    "analyze:watch": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\" --watch",
+    "sort:package": "npx sort-package-json",
     "postinstall": "npm run sort:package"
+  },
+  "dependencies": {
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@blockquote/sass-style-template": "^2.0.0",
     "@blockquote/test-runner-mocha-style-reporter": "^1.0.0",
     "@custom-elements-manifest/analyzer": "^0.5.3",
+    "@custom-elements-manifest/to-markdown": "^0.1.0",
     "@ungap/global-this": "^0.4.4",
+    "@web/dev-server": "^0.1.25",
     "@web/rollup-plugin-html": "^1.10.1",
     "@webcomponents/shadycss": "^1.11.0",
     "@webcomponents/webcomponentsjs": "^2.6.0",
-    "concurrently": "^6.2.1",
+    "concurrently": "^6.4.0",
     "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-summary": "^1.3.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
-    "vite": "^2.6.7",
-    "web-component-analyzer": "^2.0.0-next.3",
-    "sort-package-json": "^1.52.0",
-    "eslint": "^8.0.0",
-    "@open-wc/eslint-config": "^7.0.0",
-    "husky": "^7.0.0",
-    "lint-staged": "^11.0.0"
+    "vite": "^2.7.0-beta.7",
+    "sort-package-json": "^1.52.0"
   }
 }

@@ -27,7 +27,7 @@ suite('<%= className %>', () => {
         assert.lightDom.equalSnapshot(el, { ignoreAttributes: ['id'] });
       });
       test('a11y', async () => {
-        assert.isAccessible(el);
+        await assert.isAccessible(el);
       });
     });
   });

@@ -47,6 +47,15 @@ export const AppMixin = (subclass) =>
               ? 'Without @'
               : true,
         },
+        {
+          type: 'select',
+          name: 'typescript',
+          message: 'Would you like to use typescript?',
+          choices: [
+            { title: 'No', value: 'false' },
+            { title: 'Yes', value: 'true' },
+          ],
+        },
       ];
 
       this.options = await prompts(questions, {
@@ -55,7 +64,7 @@ export const AppMixin = (subclass) =>
         },
       });
 
-      // simulate prompts open-wc,
+      // simulate 'scaffold' option - @open-wc,
       this.options.type = 'scaffold';
 
       const mixins = gatherMixins(this.options);
