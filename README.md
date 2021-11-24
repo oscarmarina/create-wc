@@ -18,6 +18,7 @@ This scaffold generator extends and customizes the core parts of [@open-wc/creat
   - TypeScript
 
 - ### [sass](https://github.com/oscarmarina/sass-style-template)
+
   - SCSS watcher with autoprefixer
 
 - ### miscellany
@@ -160,6 +161,10 @@ npm run sass:watch
 npm start
 ```
 
+Example:
+
+### [open-wc-vitejs-sass](https://github.com/oscarmarina/open-wc-vitejs-sass)
+
 <hr>
 <br>
 
@@ -218,6 +223,7 @@ open-wc scaffold
 <hr>
 
 ### the component definition is generated in its own folder
+
 ```css
 ./
 ├── my-el/
