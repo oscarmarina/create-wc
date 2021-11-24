@@ -153,6 +153,17 @@ npm run sass:watch
 <hr>
 <br>
 
+## TypeScript
+
+### build ts
+
+```bash
+npm run build
+```
+
+<hr>
+<br>
+
 ### Start:
 
 #### `"start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\""`
