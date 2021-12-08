@@ -11,7 +11,7 @@ suite('<%= className %>', () => {
 
   suite('Default', () => {
     setup(async () => {
-      el = (await fixture(html` <<%= tagName %>></<%= tagName %>> `)) as <%= className %>;
+      el = (await fixture(html` <<%= tagName %>>light-dom</<%= tagName %>> `)) as <%= className %>;
       await el.updateComplete;
     });
 

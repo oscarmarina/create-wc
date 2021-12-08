@@ -9,7 +9,7 @@ suite('<%= className %>', () => {
 
   suite('Default', () => {
     setup(async () => {
-      el = await fixture(html` <<%= tagName %>></<%= tagName %>> `);
+      el = await fixture(html` <<%= tagName %>>light-dom</<%= tagName %>> `);
       await el.updateComplete;
     });
 
