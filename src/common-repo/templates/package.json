@@ -38,7 +38,7 @@
     "rollup-plugin-summary": "^1.3.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "tiny-array-flat-polyfill": "^0.2.1",
-    "vite": "^2.7.0-beta.8",
+    "vite": "^2.7.0",
     "sort-package-json": "^1.52.0"
   }
 }
