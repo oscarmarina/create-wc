@@ -36,6 +36,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   testFramework: {
     config: {
       ui: 'tdd',
+      timeout: 4000,
     },
   },
 
