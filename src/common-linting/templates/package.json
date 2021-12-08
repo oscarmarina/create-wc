@@ -27,8 +27,8 @@
     "trailingComma": "all"
   },
   "scripts": {
-    "format": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --fix --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
-    "lint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore"
+    "format": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --fix --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
+    "lint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore"
   },
   "devDependencies": {
     "eslint": "^8.0.0",
