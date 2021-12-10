@@ -40,5 +40,8 @@
     "tiny-array-flat-polyfill": "^0.2.1",
     "vite": "^2.7.0",
     "sort-package-json": "^1.52.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
