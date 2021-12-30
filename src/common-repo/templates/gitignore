@@ -26,12 +26,16 @@ __snapshots__
 /dev/
 /build/
 /out-tsc/
-
+*.min.js
+*-styles.js
+**/*/CHANGELOG.md
 storybook-static
 
-/packages/*/package-lock.json
-/packages/*/Jenkinsfile
-/packages/*/build
 /packages/*/node_modules
-/packages/*/.editorconfig
+/packages/*/package-lock.json
+/packages/*/build
+/packages/*/dev
+/packages/*/dist
 /packages/*/.gitignore
+/packages/*/.editorconfig
+/packages/*/Jenkinsfile
