@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* process.env.npm_lifecycle_event, process.env.npm_lifecycle_script, process.env.OUTDIR; */
 
-// import { playwrightLauncher } from '@web/test-runner-playwright';
+import { playwrightLauncher } from '@web/test-runner-playwright';
 import { defaultReporter } from '@web/test-runner';
 import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
 
@@ -17,10 +17,19 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     exportConditions: ['browser', 'development'],
   },
 
-  reporters: [
-    defaultReporter(),
-    mochaStyleReporter(),
+  /** Browsers to run tests on */
+  browsers: [
+    playwrightLauncher({ product: 'chromium' }),
+    playwrightLauncher({ product: 'webkit' }),
   ],
+
+  /** Amount of browsers to run concurrently */
+  concurrentBrowsers: 2,
+
+  /** Amount of test files per browser to test concurrently */
+  concurrency: 1,
+
+  reporters: [defaultReporter(), mochaStyleReporter()],
 
   coverageConfig: {
     report: true,
@@ -43,7 +52,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
     for (const arg of log.args) {
-      if (typeof arg === 'string' && filteredLogs.some(l => arg.includes(l))) {
+      if (typeof arg === 'string' && filteredLogs.some((l) => arg.includes(l))) {
         return false;
       }
     }
@@ -52,19 +61,6 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto',
-
-  /** Amount of browsers to run concurrently */
-  // concurrentBrowsers: 2,
-
-  /** Amount of test files per browser to test concurrently */
-  // concurrency: 1,
-
-  /** Browsers to run tests on */
-  // browsers: [
-  //   playwrightLauncher({ product: 'chromium' }),
-  //   playwrightLauncher({ product: 'firefox' }),
-  //   playwrightLauncher({ product: 'webkit' }),
-  // ],
 
   // See documentation for all available options
 });

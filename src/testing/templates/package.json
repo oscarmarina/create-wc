@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "@open-wc/testing": "next",
-    "@web/test-runner": "next"
+    "@open-wc/testing": "^3.0.3",
+    "@web/test-runner": "^0.13.23",
+    "@web/test-runner-playwright": "^0.8.8"
   }
 }
