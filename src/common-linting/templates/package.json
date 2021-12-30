@@ -18,7 +18,13 @@
       "import/no-unresolved": "off",
       "class-methods-use-this": "off",
       "object-curly-newline": "off",
-      "import/extensions": ["error", "always", { "ignorePackages": true }]
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ignorePackages": true
+        }
+      ]
     }
   },
   "prettier": {
@@ -26,9 +32,18 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "stylelint": {
+    "extends": "stylelint-config-standard-scss"
+  },
   "scripts": {
-    "format": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --fix --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
-    "lint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore"
+    "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
+    "format:eslint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --fix --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
+    "format:stylelint": "stylelint --fix --allow-empty-input --ignore-path .gitignore \"**/*.{scss,css}\"",
+    "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
+    "lint:eslint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore",
+    "lint:stylelint": "stylelint --allow-empty-input --ignore-path .gitignore \"**/*.{scss,css}\""
   },
   "devDependencies": {
     "eslint": "^8.0.0",
@@ -36,6 +51,8 @@
     "husky": "^4.3.8",
     "lint-staged": "^12.0.0",
     "prettier": "^2.4.1",
-    "eslint-config-prettier": "^8.3.0"
+    "eslint-config-prettier": "^8.3.0",
+    "stylelint": "^14.0.0",
+    "stylelint-config-standard-scss": "^3.0.0"
   }
 }
