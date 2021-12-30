@@ -17,7 +17,11 @@
 
       const heading = 'World!';
       render(
-        html`<<%= tagName %> .heading=${heading}>some light-dom</<%= tagName %>>`,
+        html`<pe-pe
+          @counter-changed="${ev => console.log('==>', ev.detail)}"
+          .heading=${heading}
+          >some light-dom</pe-pe
+        >`,
         document.querySelector('#demo'),
       );
     </script>
