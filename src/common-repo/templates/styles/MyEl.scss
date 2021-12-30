@@ -3,11 +3,14 @@
   box-sizing: border-box;
 }
 
-:host([hidden]), [hidden] {
+:host([hidden]),
+[hidden] {
   display: none !important;
 }
 
-*, *:before, *:after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   white-space: nowrap;
 }
