@@ -46,13 +46,13 @@
   },
   "scripts": {
     "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
-    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
-    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .gitignore",
+    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .eslintignore",
+    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
     "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore",
-    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .gitignore"
+    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .eslintignore",
+    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^7.0.0",

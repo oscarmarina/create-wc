@@ -35,3 +35,10 @@ storybook-static
 /packages/*/dev
 /packages/*/build
 /packages/*/Jenkinsfile
+## end gitignore
+
+## specific eslintignore
+package-lock.json
+*.min.js
+*-styles.js
+CHANGELOG.md

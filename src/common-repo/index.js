@@ -22,14 +22,17 @@ export const CommonRepoMixin = (subclass) =>
         this.destinationPath('package.json'),
       );
 
-       // write & rename el scss template
-       this.copyTemplate(
+      // write & rename el scss template
+      this.copyTemplate(
         `${__dirname}/templates/styles/MyEl.scss`,
         this.destinationPath(`src/styles/${className}.scss`),
       );
 
       // write and rename .gitignore
       this.copyTemplate(`${__dirname}/templates/gitignore`, this.destinationPath(`.gitignore`));
+
+      // write and rename .gitignore
+      this.copyTemplate(`${__dirname}/templates/eslintignore`, this.destinationPath(`.eslintignore`));
 
       // copy all other files
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);
