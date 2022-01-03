@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Demo <%= tagName %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <style>
       body {
@@ -17,7 +19,11 @@
 
       const heading = 'World!';
       render(
-        html`<<%= tagName %> .heading=${heading}>some light-dom</<%= tagName %>>`,
+        html`<<%= tagName %>
+          @counter-changed="${ev => console.log('==>', ev.detail)}"
+          .heading=${heading}
+          >some light-dom</<%= tagName %>
+        >`,
         document.querySelector('#demo'),
       );
     </script>

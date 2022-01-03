@@ -43,9 +43,7 @@ export class <%= className %> extends LitElement {
 
   _onClick() {
     this.counter += 1;
-    this.dispatchEvent(
-      new CustomEvent('counter-changed', { detail: this.counter }),
-    );
+    this.dispatchEvent(new CustomEvent('counter-changed', { detail: this.counter }));
   }
 
   /**
