@@ -57,26 +57,6 @@ const copyConfig = {
  */
 
 export default defineConfig({
-  plugins: [
-    pluginHtml({
-      transformHtml: [
-        html =>
-          html.replace(
-            '<meta charset="utf-8">',
-            `<meta charset="utf-8">
-    <script src="./web_modules/@ungap/global-this/index.js"></script>
-    <script src="./web_modules/tiny-array-flat-polyfill/tiny-array-flat-polyfill.min.js"></script>
-    <script src="./web_modules/lit/polyfill-support.js"></script>
-    <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
-          ),
-      ],
-    }),
-
-    minifyHTML(minifyHTMLLiteralsConfig),
-    copy(copyConfig),
-    summary(),
-  ],
   build: {
     target: ['edge18'],
     outDir: 'dev',
@@ -86,6 +66,25 @@ export default defineConfig({
         dir: 'dev/',
         format: 'es',
       },
+      plugins: [
+        pluginHtml({
+          transformHtml: [
+            html =>
+              html.replace(
+                '<meta charset="utf-8">',
+                `<meta charset="utf-8">
+        <script src="./web_modules/@ungap/global-this/index.js"></script>
+        <script src="./web_modules/tiny-array-flat-polyfill/tiny-array-flat-polyfill.min.js"></script>
+        <script src="./web_modules/lit/polyfill-support.js"></script>
+        <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
+              ),
+          ],
+        }),
+        minifyHTML(minifyHTMLLiteralsConfig),
+        copy(copyConfig),
+        summary(),
+      ],
     },
   },
 });
