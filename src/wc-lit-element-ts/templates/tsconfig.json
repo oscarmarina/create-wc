@@ -23,5 +23,5 @@
     "noImplicitOverride": true
   },
   "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts"],
-  "exclude": []
+  "exclude": ["node_modules"]
 }
