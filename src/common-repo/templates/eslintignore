@@ -1,44 +1,41 @@
 ## editors
 /.idea
 /.vscode
+/*.code-workspace
 
 ## system files
 .DS_Store
 
-## npm
-/node_modules/
-/npm-debug.log
+## npm/yarn
+node_modules
+npm-debug.log
 *-debug.log
+yarn-error.log
 
 ## testing
-/coverage/
+coverage
 **/coverage/
-/reports/
+reports
 __snapshots__
+screenshots/.current
+screenshots/.diff
 
-## temp folders
-/.tmp/
 
 ## build
 *.config.js
-/_site/
-/dist/
-/dev/
-/build/
-/out-tsc/
+_site
+dist
+dev
+build
+.tmp
+*.tgz
+*.tsbuildinfo
 storybook-static
-
-/packages/*/node_modules
-/packages/*/package-lock.json
-/packages/*/_site
-/packages/*/dist
-/packages/*/dev
-/packages/*/build
-/packages/*/Jenkinsfile
 ## end gitignore
 
 ## specific eslintignore
 package-lock.json
 *.min.js
 *-styles.js
+*-styles.ts
 CHANGELOG.md

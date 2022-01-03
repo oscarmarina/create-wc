@@ -1,4 +1,14 @@
 {
+  "scripts": {
+    "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
+    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .eslintignore",
+    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
+    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .eslintignore",
+    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -15,6 +25,12 @@
       "npm run format:stylelint"
     ]
   },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "eslintConfig": {
     "plugins": [
       "log-filenames"
@@ -24,7 +40,6 @@
       "@open-wc"
     ],
     "rules": {
-      "import/no-unresolved": "off",
       "class-methods-use-this": "off",
       "object-curly-newline": "off",
       "import/extensions": [
@@ -33,26 +48,27 @@
         {
           "ignorePackages": true
         }
-      ]
+      ],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "**/test/**/*.{js,ts}",
+            "**/*.config.{js,mjs,cjs}",
+            "**/*.conf.{js,mjs,cjs}"
+          ]
+        }
+      ],
+      "import/no-unresolved": "off",
+      "import/prefer-default-export": "off"
     }
   },
-  "prettier": {
-    "arrowParens": "avoid",
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "stylelint": {
-    "extends": "stylelint-config-standard-scss"
-  },
-  "scripts": {
-    "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
-    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
-    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .eslintignore",
-    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
-    "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
-    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .eslintignore",
-    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore"
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+      "custom-property-pattern": null,
+      "max-line-length": null
+    }
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^7.0.0",
