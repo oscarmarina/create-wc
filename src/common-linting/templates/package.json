@@ -29,7 +29,15 @@
     "arrowParens": "avoid",
     "printWidth": 100,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.{scss,css}",
+        "options": {
+          "singleQuote": false
+        }
+      }
+    ]
   },
   "eslintConfig": {
     "plugins": [
