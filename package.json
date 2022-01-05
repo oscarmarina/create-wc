@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "LitElement",
