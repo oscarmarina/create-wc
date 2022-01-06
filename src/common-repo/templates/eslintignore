@@ -36,6 +36,5 @@ storybook-static
 ## specific eslintignore
 package-lock.json
 *.min.js
-*-styles.js
-*-styles.ts
+*-styles.*
 CHANGELOG.md
