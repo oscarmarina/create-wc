@@ -2,7 +2,6 @@
 import { defineConfig } from 'vite';
 import pluginHtml from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
-import summary from 'rollup-plugin-summary';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 
 const minifyHTMLLiteralsConfig = {
@@ -83,7 +82,6 @@ export default defineConfig({
         }),
         minifyHTML(minifyHTMLLiteralsConfig),
         copy(copyConfig),
-        summary(),
       ],
     },
   },
