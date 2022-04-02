@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "LitElement",
@@ -39,8 +39,8 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@open-wc/create": "^0.37.95",
-    "chalk": "^4.1.0",
+    "@open-wc/create": "^0.38.63",
+    "chalk": "^5.0.0",
     "command-line-args": "^5.1.1",
     "prompts": "^2.4.1",
     "semver": "^7.3.5"
