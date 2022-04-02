@@ -44,11 +44,18 @@
       "log-filenames"
     ],
     "extends": [
-      "prettier",
-      "@open-wc"
+      "@open-wc",
+      "prettier"
     ],
     "rules": {
       "class-methods-use-this": "off",
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowShortCircuit": true,
+          "allowTernary": true
+        }
+      ],
       "object-curly-newline": "off",
       "import/extensions": [
         "error",
