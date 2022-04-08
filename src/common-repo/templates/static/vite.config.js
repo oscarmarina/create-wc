@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import pluginHtml from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
+import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 
 const minifyHTMLLiteralsConfig = {
   options: {
@@ -68,7 +69,7 @@ export default defineConfig({
       plugins: [
         pluginHtml({
           transformHtml: [
-            html =>
+            (html) =>
               html.replace(
                 '<meta charset="utf-8">',
                 `<meta charset="utf-8">
@@ -82,6 +83,7 @@ export default defineConfig({
         }),
         minifyHTML(minifyHTMLLiteralsConfig),
         copy(copyConfig),
+        totalBundlesize(),
       ],
     },
   },
