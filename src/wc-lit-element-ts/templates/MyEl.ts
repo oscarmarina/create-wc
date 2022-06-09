@@ -3,7 +3,7 @@ import { property } from 'lit/decorators.js';
 import styles from './styles/<%= className %>-styles.js';
 
 export class <%= className %> extends LitElement {
-  static get is() {
+  static get is(): string {
     return '<%= tagName %>';
   }
 
@@ -24,13 +24,13 @@ export class <%= className %> extends LitElement {
   override render() {
     return html`
       <h1>${this.sayHello(this.heading)}!</h1>
-      <button @click=${this._onClick}>Counter: ${this.counter}</button>
+      <button @click=${this.#onClick}>Counter: ${this.counter}</button>
       <hr />
       <slot></slot>
     `;
   }
 
-  private _onClick() {
+  #onClick() {
     this.counter += 1;
     this.dispatchEvent(new CustomEvent('counter-changed', { detail: this.counter }));
   }
@@ -42,5 +42,11 @@ export class <%= className %> extends LitElement {
    */
   sayHello(heading: string): string {
     return `Hello, ${heading}`;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    '<%= tagName %>': <%= className %>;
   }
 }
