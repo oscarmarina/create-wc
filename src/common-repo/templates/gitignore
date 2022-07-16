@@ -22,7 +22,6 @@ screenshots/.diff
 
 
 ## build
-*.config.js
 _site
 dist
 dev
