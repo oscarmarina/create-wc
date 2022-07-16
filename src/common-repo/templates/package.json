@@ -16,7 +16,6 @@
     "dev:vite": "vite build",
     "preview:vite": "vite preview",
     "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
-    "analyze:watch": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\" --watch",
     "sort:package": "npx sort-package-json",
     "postinstall": "npm run sort:package"
   },
