@@ -40,6 +40,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       functions: 80,
       lines: 80,
     },
+    exclude: ['**/node_modules/**/*', '**/web_modules/**/*', '**/__wds-outside-root__/**/*'],
   },
 
   testFramework: {
