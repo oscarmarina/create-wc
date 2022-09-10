@@ -93,14 +93,14 @@
     }
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^7.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-log-filenames": "^1.0.4",
-    "husky": "^4.3.8",
-    "lint-staged": "^13.0.1",
-    "prettier": "^2.4.1",
-    "stylelint": "^14.0.0",
+    "@open-wc/eslint-config": "^8.0.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-log-filenames": "^1.0.6",
+    "husky": "^4.3.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.11.0",
     "stylelint-config-standard-scss": "^5.0.0"
   }
 }

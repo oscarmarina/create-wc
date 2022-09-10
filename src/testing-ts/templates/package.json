@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "@open-wc/testing": "^3.0.3",
-    "@web/test-runner": "^0.13.23",
-    "@web/test-runner-playwright": "^0.8.8"
+    "@open-wc/testing": "^3.1.6",
+    "@web/test-runner": "^0.14.0",
+    "@web/test-runner-playwright": "^0.8.10"
   }
 }
