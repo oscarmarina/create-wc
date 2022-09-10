@@ -15,5 +15,4 @@ export default css`:host {
 *::before,
 *::after {
   box-sizing: inherit;
-  white-space: nowrap;
 }`;

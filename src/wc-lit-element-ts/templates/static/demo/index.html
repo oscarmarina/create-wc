@@ -20,8 +20,7 @@
       const heading = 'World!';
       render(
         html`<<%= tagName %>
-          @counter-changed="${ev => console.log('==>', ev.detail)}"
-          .heading=${heading}
+          @counter-changed="${ev => console.log('==>', ev.detail)}" .heading=${heading}
           >some light-dom</<%= tagName %>
         >`,
         document.querySelector('#demo'),

@@ -50,8 +50,7 @@ suite('<%= className %>', () => {
   suite('Override ', () => {
     setup(async () => {
       el = (await fixture(
-        html` <<%= tagName %> heading="attribute heading"></<%= tagName %>> `,
-      )) as <%= className %>;
+        html` <<%= tagName %> heading="attribute heading"></<%= tagName %>> `)) as <%= className %>;
       await el.updateComplete;
     });
 
