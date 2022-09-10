@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "LitElement",
@@ -40,16 +40,16 @@
   },
   "dependencies": {
     "@open-wc/create": "^0.38.63",
-    "chalk": "^5.0.0",
-    "command-line-args": "^5.1.1",
-    "prompts": "^2.4.1",
-    "semver": "^7.3.5"
+    "chalk": "^5.0.1",
+    "command-line-args": "^5.2.1",
+    "prompts": "^2.4.2",
+    "semver": "^7.3.7"
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^4.2.0",
-    "eslint": "^7.24.0",
-    "eslint-config-prettier": "^8.2.0",
-    "prettier": "^2.2.1"
+    "@open-wc/eslint-config": "^8.0.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   },
   "engines": {
     "node": ">=14.15.0"
