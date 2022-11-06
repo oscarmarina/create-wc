@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* process.env.npm_lifecycle_event, process.env.npm_lifecycle_script, process.env.OUTDIR; */
-
 import { playwrightLauncher } from '@web/test-runner-playwright';
-import { defaultReporter } from '@web/test-runner';
-import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
+import { defaultReporter, summaryReporter } from '@web/test-runner';
+import { coverageTableReporter } from '@blockquote/coverage-table-reporter';
 
 const filteredLogs = ['in dev mode'];
 const outDir = process.env.OUTDIR || '.';
@@ -29,11 +28,12 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Amount of test files per browser to test concurrently */
   concurrency: 1,
 
-  reporters: [defaultReporter(), mochaStyleReporter()],
+  reporters: [defaultReporter(), summaryReporter(), coverageTableReporter()],
 
   coverageConfig: {
     report: true,
     reportDir: `${outDir}/test/coverage`,
+    reporters: ['html', 'lcovonly', 'json'],
     threshold: {
       statements: 80,
       branches: 80,
@@ -53,7 +53,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
     for (const arg of log.args) {
-      if (typeof arg === 'string' && filteredLogs.some((l) => arg.includes(l))) {
+      if (typeof arg === 'string' && filteredLogs.some(l => arg.includes(l))) {
         return false;
       }
     }
