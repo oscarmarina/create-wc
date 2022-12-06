@@ -2,11 +2,11 @@
   "scripts": {
     "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
     "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
-    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .eslintignore",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html}\" --write --ignore-path .eslintignore",
     "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
     "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
     "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
-    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .eslintignore",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .eslintignore",
     "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore"
   },
   "husky": {
@@ -18,7 +18,7 @@
     "**/*.{js,ts,html}": [
       "npm run format:eslint"
     ],
-    "**/*.{js,ts,json,html,md}": [
+    "**/*.{js,ts,json,html}": [
       "npm run format:prettier"
     ],
     "**/*.{scss,css}": [
@@ -93,14 +93,14 @@
     }
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^8.0.2",
-    "eslint": "^8.23.0",
+    "@open-wc/eslint-config": "^9.0.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-log-filenames": "^1.0.6",
     "husky": "^4.3.0",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "stylelint": "^14.11.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.0",
+    "stylelint": "^14.16.0",
     "stylelint-config-standard-scss": "^6.1.0"
   }
 }

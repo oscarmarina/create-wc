@@ -1,6 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { defineConfig } from 'vite';
-import pluginHtml from '@web/rollup-plugin-html';
+import { rollupPluginHTML as pluginHtml } from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 

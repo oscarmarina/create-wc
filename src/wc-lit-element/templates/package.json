@@ -1,4 +1,22 @@
 {
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json",
+    "./src/<%= className %>.js": {
+      "default": "./src/<%= className %>.js"
+    },
+    "./define/<%= tagName %>.js": {
+      "default": "./define/<%= tagName %>.js"
+    },
+    "./index.js": {
+      "default": "./index.js"
+    },
+    "./src/styles/<%= className %>-styles.js": {
+      "default": "./src/styles/<%= className %>-styles.js"
+    }
+  },
   "main": "index.js",
   "module": "index.js",
   "files": [
