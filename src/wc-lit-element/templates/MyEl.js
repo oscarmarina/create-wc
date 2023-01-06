@@ -1,30 +1,24 @@
 import { html, LitElement } from 'lit';
-import styles from './styles/<%= className %>-styles.js';
+import { styles } from './styles/<%= tagName %>-styles.css.js';
 
 export class <%= className %> extends LitElement {
-  static get is() {
-    return '<%= tagName %>';
-  }
+  static is = '<%= tagName %>';
 
-  static get styles() {
-    return [styles];
-  }
+  static styles = [styles];
 
-  static get properties() {
-    return {
-      /**
-       * The heading to say "Hello" to.
-       * @type {string}
-       */
-      heading: { type: String },
+  static properties = {
+    /**
+     * The heading to say "Hello" to.
+     * @type {string}
+     */
+    heading: { type: String },
 
-      /**
-       * The number of times the button has been clicked.
-       * @type {number}
-       */
-      counter: { type: Number },
-    };
-  }
+    /**
+     * The number of times the button has been clicked.
+     * @type {number}
+     */
+    counter: { type: Number },
+  };
 
   constructor() {
     super();
@@ -35,15 +29,15 @@ export class <%= className %> extends LitElement {
   render() {
     return html`
       <h1>${this.sayHello(this.heading)}!</h1>
-      <button @click=${this._onClick}>Counter: ${this.counter}</button>
+      <button @click=${this.#onClick}>Counter: ${this.counter}</button>
       <hr />
       <slot></slot>
     `;
   }
 
-  _onClick() {
+  #onClick() {
     this.counter += 1;
-    this.dispatchEvent(new CustomEvent('counter-changed', { detail: this.counter }));
+    this.dispatchEvent(new CustomEvent('counterchange', { detail: this.counter }));
   }
 
   /**

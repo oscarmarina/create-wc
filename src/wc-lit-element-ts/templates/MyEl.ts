@@ -1,11 +1,9 @@
 import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import styles from './styles/<%= className %>-styles.js';
+import { styles } from './styles/<%= tagName %>-styles.css.js';
 
 export class <%= className %> extends LitElement {
-  static get is(): string {
-    return '<%= tagName %>';
-  }
+  static is: string = '<%= tagName %>';
 
   static override styles = [styles];
 
@@ -32,7 +30,7 @@ export class <%= className %> extends LitElement {
 
   #onClick() {
     this.counter += 1;
-    this.dispatchEvent(new CustomEvent('counter-changed', { detail: this.counter }));
+    this.dispatchEvent(new CustomEvent('counterchange', { detail: this.counter }));
   }
 
   /**

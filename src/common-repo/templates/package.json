@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@blockquote/rollup-plugin-total-bundlesize": "^1.0.0",
-    "@blockquote/sass-style-template": "^2.1.2",
+    "@blockquote/sass-style-template": "^3.0.0",
     "@blockquote/coverage-table-reporter": "^1.0.0",
     "@custom-elements-manifest/analyzer": "^0.6.6",
     "@ungap/global-this": "^0.4.4",
@@ -36,7 +36,7 @@
     "concurrently": "^7.6.0",
     "rollup-plugin-copy": "^3.4.0",
     "tiny-array-flat-polyfill": "^0.2.1",
-    "vite": "^4.0.2",
+    "vite": "^4.0.4",
     "sort-package-json": "^2.1.0"
   },
   "publishConfig": {

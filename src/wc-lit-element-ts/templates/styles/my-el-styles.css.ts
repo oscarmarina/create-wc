@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { css } from 'lit';
 
-export default css`:host {
+export const styles = css`:host {
   display: block;
   box-sizing: border-box;
 }

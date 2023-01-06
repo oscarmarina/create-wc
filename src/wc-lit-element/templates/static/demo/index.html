@@ -24,7 +24,7 @@
       const heading = 'World!';
       render(
         html`<<%= tagName %>
-          @counter-changed="${ev => console.log('==>', ev.detail)}" .heading=${heading}
+          @counterchange="${ev => console.log('==>', ev.detail)}" .heading=${heading}
           >some light-dom</<%= tagName %>
         >`,
         document.querySelector('#demo'),

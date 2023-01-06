@@ -45,8 +45,8 @@ export const TsWcLitElementMixin = (subclass) =>
 
       // write & rename el styles template
       this.copyTemplate(
-        `${__dirname}/templates/styles/MyEl-styles.ts`,
-        this.destinationPath(`src/styles/${className}-styles.ts`),
+        `${__dirname}/templates/styles/my-el-styles.css.ts`,
+        this.destinationPath(`src/styles/${tagName}-styles.css.ts`),
       );
 
       // write & rename el registration template

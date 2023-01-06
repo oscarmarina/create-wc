@@ -40,8 +40,8 @@ export const WcLitElementMixin = (subclass) =>
 
       // write & rename el styles template
       this.copyTemplate(
-        `${__dirname}/templates/styles/MyEl-styles.js`,
-        this.destinationPath(`src/styles/${className}-styles.js`),
+        `${__dirname}/templates/styles/my-el-styles.css.js`,
+        this.destinationPath(`src/styles/${tagName}-styles.css.js`),
       );
 
       // write & rename el registration template

@@ -13,8 +13,8 @@
     "./index.js": {
       "default": "./dist/index.js"
     },
-    "./src/styles/<%= className %>-styles.js": {
-      "default": "./dist/src/styles/<%= className %>-styles.js"
+    "./src/styles/<%= tagName %>-styles.css.js": {
+      "default": "./dist/src/styles/<%= tagName %>-styles.css.js"
     }
   },
   "main": "dist/index.js",

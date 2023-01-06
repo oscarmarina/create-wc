@@ -15,7 +15,7 @@ export const CommonRepoMixin = (subclass) =>
       };
 
       await super.execute();
-      const { className } = this.templateData;
+      const { tagName } = this.templateData;
 
       this.copyTemplateJsonInto(
         `${__dirname}/templates/package.json`,
@@ -24,8 +24,8 @@ export const CommonRepoMixin = (subclass) =>
 
       // write & rename el scss template
       this.copyTemplate(
-        `${__dirname}/templates/styles/MyEl.scss`,
-        this.destinationPath(`src/styles/${className}.scss`),
+        `${__dirname}/templates/styles/my-el.scss`,
+        this.destinationPath(`src/styles/${tagName}.scss`),
       );
 
       // write and rename .gitignore
