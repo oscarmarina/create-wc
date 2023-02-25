@@ -86,21 +86,20 @@
     "extends": "stylelint-config-standard-scss",
     "rules": {
       "custom-property-pattern": null,
-      "max-line-length": null,
       "no-duplicate-selectors": null,
       "color-function-notation": null,
       "alpha-value-notation": null
     }
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^9.0.0",
-    "eslint": "^8.30.0",
-    "eslint-config-prettier": "^8.5.0",
+    "@open-wc/eslint-config": "^9.2.2",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-log-filenames": "^1.0.6",
     "husky": "^4.3.8",
-    "lint-staged": "^13.1.0",
-    "prettier": "^2.8.1",
-    "stylelint": "^14.16.0",
-    "stylelint-config-standard-scss": "^6.1.0"
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard-scss": "^7.0.1"
   }
 }
