@@ -55,6 +55,7 @@ npm run format
 
 ### - Testing with Web Test Runner
 
+- playwright
 - mocha-style reporter
 - coverage config
 - TDD option
@@ -64,8 +65,9 @@ npm run format
 ### web-test-runner.config
 
 ```js
-import { defaultReporter } from '@web/test-runner';
-import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
+import { playwrightLauncher } from '@web/test-runner-playwright';
+import { defaultReporter, summaryReporter } from '@web/test-runner';
+import { coverageTableReporter } from '@blockquote/coverage-table-reporter'
 
 const outDir = process.env.OUTDIR || '.';
 
@@ -76,9 +78,22 @@ export default ({
     exportConditions: ['browser', 'development'],
   },
 
+  /** Browsers to run tests on */
+  browsers: [
+    playwrightLauncher({ product: 'chromium' }),
+    playwrightLauncher({ product: 'webkit' }),
+  ],
+
+  /** Amount of browsers to run concurrently */
+  concurrentBrowsers: 2,
+
+  /** Amount of test files per browser to test concurrently */
+  concurrency: 1,
+
   reporters: [
     defaultReporter(),
-    mochaStyleReporter(),
+    summaryReporter(),
+    coverageTableReporter()
   ],
 
   coverageConfig: {
@@ -95,6 +110,8 @@ export default ({
   testFramework: {
     config: {
       ui: 'tdd',
+      timeout: 4000,
+      reporter: 'html'
     },
   },
 

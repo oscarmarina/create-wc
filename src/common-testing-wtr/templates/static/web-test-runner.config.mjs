@@ -47,6 +47,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     config: {
       ui: 'tdd',
       timeout: 4000,
+      reporter: 'html'
     },
   },
 
