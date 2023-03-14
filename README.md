@@ -196,30 +196,6 @@ Example:
 <hr>
 <br>
 
-## Different major versions:
-
-```json
-"devDependencies": {
-  "eslint": "^8.0.0",
-  "@open-wc/eslint-config": "^7.0.0",
-  ...
-}
-
-```
-
-open-wc scaffold
-
-```json
-"devDependencies": {
-  "eslint": "^7.32.0",
-  "@open-wc/eslint-config": "^4.3.0",
-  ...
-}
-
-```
-
-<hr>
-
 ## File structure JS & TS
 
 ```css
