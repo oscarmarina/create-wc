@@ -96,6 +96,7 @@ export default ({
     coverageTableReporter()
   ],
 
+  coverage: true,
   coverageConfig: {
     report: true,
     reportDir: `${outDir}/test/coverage`,

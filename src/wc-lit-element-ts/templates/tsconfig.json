@@ -1,29 +1,29 @@
 {
   "compilerOptions": {
     "target": "es2019",
-    "module": "es2020",
     "lib": ["es2020", "DOM", "DOM.Iterable"],
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "es2020",
+    "moduleResolution": "bundler",
+    "rootDirs": ["./src", "./define", ".test/"],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "inlineSources": true,
-    "esModuleInterop": true,
     "outDir": "./dist",
-    "rootDirs": ["./src", "./define", ".test/"],
+    "inlineSources": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": false,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true
+    "noImplicitOverride": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"],
-  "exclude": ["node_modules/**"]
+  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"]
 }

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "wtr --coverage",
+    "test": "wtr",
     "test:watch": "wtr --watch"
   }
 }

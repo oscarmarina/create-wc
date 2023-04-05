@@ -30,6 +30,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
 
   reporters: [summaryReporter(), defaultReporter(), coverageTableReporter()],
 
+  coverage: true,
   coverageConfig: {
     reportDir: `${outDir}/test/coverage`,
     reporters: ['lcov', 'lcovonly', 'json'],

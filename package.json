@@ -39,17 +39,17 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@open-wc/create": "^0.38.69",
+    "@open-wc/create": "^0.38.70",
     "chalk": "^5.2.0",
     "command-line-args": "^5.2.1",
     "prompts": "^2.4.2",
     "semver": "^7.3.8"
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^9.2.2",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.7.0",
-    "prettier": "^2.8.4"
+    "@open-wc/eslint-config": "^10.0.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.7"
   },
   "engines": {
     "node": ">=14.15.0"
