@@ -27,8 +27,6 @@
   ],
   "scripts": {
     "build": "echo \"This is not a TypeScript project, so no need to build.\"",
-    "sass:watch": "sass-style-template",
-    "start:wds": "concurrently -k -r \"npm:sass:watch\" \"npm:wds\"",
-    "wds": "web-dev-server"
+    "sass:watch": "sass-style-template"
   }
 }

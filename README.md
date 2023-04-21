@@ -221,7 +221,6 @@ Example:
 │   ├── package.json
 │   ├── README.md
 │   ├── vite.config.js
-│   ├── web-dev-server.config.mjs
 │   └── web-test-runner.config.mjs
 ```
 
