@@ -93,13 +93,13 @@
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^10.0.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-log-filenames": "^1.0.6",
     "husky": "^4.3.8",
-    "lint-staged": "^13.2.0",
+    "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
-    "stylelint": "^15.4.0",
-    "stylelint-config-standard-scss": "^7.0.1"
+    "stylelint": "^15.5.0",
+    "stylelint-config-standard-scss": "^8.0.0"
   }
 }
