@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,10 +32,30 @@ export const CommonRepoMixin = (subclass) =>
       // write and rename .gitignore
       this.copyTemplate(`${__dirname}/templates/gitignore`, this.destinationPath(`.gitignore`));
 
-      // write and rename .gitignore
-      this.copyTemplate(`${__dirname}/templates/eslintignore`, this.destinationPath(`.eslintignore`));
+      // write and rename .eslintignore
+      this.copyTemplate(
+        `${__dirname}/templates/eslintignore`,
+        this.destinationPath(`.eslintignore`),
+      );
 
       // copy all other files
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);
+    }
+
+    async end() {
+      await super.end();
+
+      const { destinationPath } = this.options;
+
+      if (destinationPath) {
+        const huskyPreCommit = path.join(this.options.destinationPath, '.husky/pre-commit');
+        try {
+          fs.chmodSync(huskyPreCommit, 0o755);
+        } catch (err) {
+          if (err.code !== 'ENOENT') {
+            throw err;
+          }
+        }
+      }
     }
   };

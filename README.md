@@ -202,6 +202,11 @@ Example:
 ```css
 ./
 ├── my-el/
+│   ├── .husky/
+│   │   ├── _/
+│   │   │   ├── .gitignore
+│   │   │   └── husky.sh
+│   │   └── pre-commit
 │   ├── define/
 │   │   └── my-el.{js,ts}
 │   ├── demo/
