@@ -87,14 +87,14 @@
     }
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^10.0.0",
-    "eslint": "^8.39.0",
+    "@open-wc/eslint-config": "^12.0.0",
+    "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-log-filenames": "^1.0.6",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.1",
+    "lint-staged": "^13.2.3",
     "prettier": "^2.8.8",
-    "stylelint": "^15.6.0",
-    "stylelint-config-standard-scss": "^9.0.0"
+    "stylelint": "^15.9.0",
+    "stylelint-config-standard-scss": "^10.0.0"
   }
 }

@@ -3,7 +3,9 @@
     ".": {
       "default": "./index.js"
     },
-    "./package.json": "./package.json",
+    "./package.json": {
+      "default": "./package.json"
+    },
     "./src/<%= className %>.js": {
       "default": "./src/<%= className %>.js"
     },
