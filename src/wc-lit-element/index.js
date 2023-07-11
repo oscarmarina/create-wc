@@ -7,7 +7,12 @@ import { CommonRepoMixin } from '../common-repo/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
+const compose = (...fns) =>
+  fns.reduce(
+    (f, g) =>
+      (...args) =>
+        f(g(...args)),
+  );
 const safeReduce = (f, initial) => (xs) => (Array.isArray(xs) ? xs.reduce(f, initial) : xs);
 
 const getTemplatePart = compose(processTemplate, readFileFromPath);
@@ -22,7 +27,6 @@ function featureReadme(acc, feature, i, a) {
 }
 
 const safeFeatureReadme = safeReduce(featureReadme, '');
-
 
 /* eslint-disable no-console */
 export const WcLitElementMixin = (subclass) =>

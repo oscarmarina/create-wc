@@ -14,5 +14,5 @@ export const CommonLintingMixin = (subclass) =>
         `${__dirname}/templates/package.json`,
         this.destinationPath('package.json'),
       );
-  }
-};
+    }
+  };

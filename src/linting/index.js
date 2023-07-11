@@ -7,7 +7,7 @@ import { LintingPrettierMixin } from '../linting-prettier/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const LintingMixin = subclass =>
+export const LintingMixin = (subclass) =>
   class extends LintingPrettierMixin(LintingEsLintMixin(subclass)) {
     async execute() {
       await super.execute();
@@ -19,9 +19,3 @@ export const LintingMixin = subclass =>
       );
     }
   };
-
-
-
-
-
-

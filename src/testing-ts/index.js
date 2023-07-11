@@ -6,7 +6,7 @@ import { TsTestingWebTestRunnerMixin } from '../testing-wtr-ts/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const TsTestingMixin = subclass =>
+export const TsTestingMixin = (subclass) =>
   class extends TsTestingWebTestRunnerMixin(subclass) {
     async execute() {
       await super.execute();
@@ -18,7 +18,7 @@ export const TsTestingMixin = subclass =>
     }
   };
 
-export const TsTestingScaffoldMixin = subclass =>
+export const TsTestingScaffoldMixin = (subclass) =>
   class extends subclass {
     async execute() {
       await super.execute();

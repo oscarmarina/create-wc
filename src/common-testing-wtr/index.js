@@ -10,5 +10,5 @@ export const CommonTestingWtrMixin = (subclass) =>
     async execute() {
       await super.execute();
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);
-  }
-};
+    }
+  };

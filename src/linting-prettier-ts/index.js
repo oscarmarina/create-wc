@@ -4,7 +4,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const TsLintingPrettierMixin = subclass =>
+export const TsLintingPrettierMixin = (subclass) =>
   class extends subclass {
     async execute() {
       await super.execute();

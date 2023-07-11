@@ -13,7 +13,7 @@ const compose = (...fns) =>
       (...args) =>
         f(g(...args)),
   );
-const safeReduce = (f, initial) => (xs) => Array.isArray(xs) ? xs.reduce(f, initial) : xs;
+const safeReduce = (f, initial) => (xs) => (Array.isArray(xs) ? xs.reduce(f, initial) : xs);
 
 const getTemplatePart = compose(processTemplate, readFileFromPath);
 

@@ -7,7 +7,7 @@ import { TsLintingPrettierMixin } from '../linting-prettier-ts/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const TsLintingMixin = subclass =>
+export const TsLintingMixin = (subclass) =>
   class extends TsLintingPrettierMixin(TsLintingEsLintMixin(subclass)) {
     async execute() {
       await super.execute();

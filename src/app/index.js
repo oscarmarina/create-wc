@@ -42,10 +42,7 @@ export const AppMixin = (subclass) =>
           type: (prev, all) => (all.nameSpaceSelect === 'true' ? 'text' : null),
           name: 'nameSpace',
           message: 'What is the namespace of your web component',
-          validate: (nameSpace) =>
-            /^[@]/.test(nameSpace)
-              ? 'Without @'
-              : true,
+          validate: (nameSpace) => (/^[@]/.test(nameSpace) ? 'Without @' : true),
         },
         {
           type: 'select',

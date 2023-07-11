@@ -2,7 +2,6 @@
 import { CommonLintingMixin } from '../common-linting/index.js';
 import { CommonTestingWtrMixin } from '../common-testing-wtr/index.js';
 
-
 import { LintingMixin } from '../linting/index.js';
 import { WcLitElementPackageMixin } from '../wc-lit-element/index.js';
 import { TestingMixin, TestingScaffoldMixin } from '../testing/index.js';
