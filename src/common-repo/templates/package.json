@@ -22,13 +22,13 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "lit": "^2.7.5"
+    "lit": "^2.7.6"
   },
   "devDependencies": {
     "@blockquote/rollup-plugin-total-bundlesize": "^2.0.1",
     "@blockquote/sass-style-template": "^3.0.1",
     "@blockquote/coverage-table-reporter": "^1.0.0",
-    "@custom-elements-manifest/analyzer": "^0.8.3",
+    "@custom-elements-manifest/analyzer": "^0.8.4",
     "@ungap/global-this": "^0.4.4",
     "@web/rollup-plugin-html": "^2.0.0",
     "@webcomponents/shadycss": "^1.11.2",
@@ -36,7 +36,7 @@
     "concurrently": "^8.2.0",
     "rollup-plugin-copy": "^3.4.0",
     "tiny-array-flat-polyfill": "^0.2.1",
-    "vite": "^4.4.3",
+    "vite": "^4.4.7",
     "sort-package-json": "^2.5.1"
   },
   "publishConfig": {
