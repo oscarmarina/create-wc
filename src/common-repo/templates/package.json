@@ -22,7 +22,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "lit": "^2.7.6"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
     "@blockquote/rollup-plugin-total-bundlesize": "^2.0.1",
@@ -33,10 +33,10 @@
     "@web/rollup-plugin-html": "^2.0.0",
     "@webcomponents/shadycss": "^1.11.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "^8.2.0",
+    "concurrently": "^8.2.1",
     "rollup-plugin-copy": "^3.4.0",
     "tiny-array-flat-polyfill": "^0.2.1",
-    "vite": "^4.4.7",
+    "vite": "^4.4.9",
     "sort-package-json": "^2.5.1"
   },
   "publishConfig": {
