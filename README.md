@@ -111,8 +111,7 @@ export default ({
   testFramework: {
     config: {
       ui: 'tdd',
-      timeout: 4000,
-      reporter: 'html'
+      timeout: 4000
     },
   },
 
@@ -171,6 +170,17 @@ npm run sass:watch
 <hr>
 <br>
 
+## Custom Element Manifest
+
+### Generating README from custom-elements.json
+
+```bash
+npm run analyze
+```
+
+<hr>
+<br>
+
 ## TypeScript
 
 ### build ts
@@ -190,7 +200,7 @@ npm run build
 npm start
 ```
 
-Example:
+**Example:**
 
 ### [open-wc-vitejs-sass](https://github.com/oscarmarina/open-wc-vitejs-sass)
 

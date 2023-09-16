@@ -2,9 +2,16 @@ import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import { styles } from './styles/<%= tagName %>-styles.css.js';
 
+/**
+ * ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+ *
+ * ## `<<%= tagName %>>`
+ * An example element.
+ *
+ * @fires counterchange - Indicates when the count changes
+ * @slot - This element has a slot
+ */
 export class <%= className %> extends LitElement {
-  static is: string = '<%= tagName %>';
-
   static override styles = [styles];
 
   /**
