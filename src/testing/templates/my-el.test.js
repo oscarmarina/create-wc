@@ -1,8 +1,10 @@
-import { html, fixture, assert, fixtureCleanup } from '@open-wc/testing';
-
+import { html, fixture, assert, expect, fixtureCleanup } from '@open-wc/testing';
 import '../define/<%= tagName %>.js';
 
 suite('<%= className %>', () => {
+  /**
+   * @type {import('../index').<%= className %>}
+   */
   let el;
 
   teardown(() => fixtureCleanup());
@@ -20,11 +22,11 @@ suite('<%= className %>', () => {
 
     suite('Semantic Dom and a11y', () => {
       test('SHADOW DOM - Structure test', async () => {
-        await assert.shadowDom.equalSnapshot(el, { ignoreAttributes: ['id'] });
+        await expect(el).shadowDom.to.equalSnapshot();
       });
 
       test('LIGHT DOM - Structure test', async () => {
-        await assert.lightDom.equalSnapshot(el, { ignoreAttributes: ['id'] });
+        await expect(el).lightDom.to.equalSnapshot();
       });
       test('a11y', async () => {
         await assert.isAccessible(el);
@@ -39,7 +41,7 @@ suite('<%= className %>', () => {
     });
 
     test('increases the counter on button click', () => {
-      el.shadowRoot.querySelector('button').click();
+      el.shadowRoot?.querySelector('button')?.click();
       assert.equal(el.counter, 6);
     });
   });

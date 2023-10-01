@@ -7,6 +7,8 @@ import { styles } from './styles/<%= tagName %>-styles.css.js';
  * ## `<<%= tagName %>>`
  * An example element.
  *
+ * @attr heading
+ * @attr counter
  * @fires counterchange - Indicates when the count changes
  * @slot - This element has a slot
  */
@@ -16,13 +18,11 @@ export class <%= className %> extends LitElement {
   static properties = {
     /**
      * The heading to say "Hello" to.
-     * @type {string}
      */
     heading: { type: String },
 
     /**
      * The number of times the button has been clicked.
-     * @type {number}
      */
     counter: { type: Number },
   };

@@ -1,7 +1,5 @@
 import { html, fixture, assert, fixtureCleanup } from '@open-wc/testing';
-
 import { <%= className %> } from '../src/<%= className %>.js';
-
 import '../define/<%= tagName %>.js';
 
 suite('<%= className %>', () => {
@@ -11,7 +9,7 @@ suite('<%= className %>', () => {
 
   suite('Default', () => {
     setup(async () => {
-      el = (await fixture(html` <<%= tagName %>>light-dom</<%= tagName %>> `)) as <%= className %>;
+      el = (await fixture(html`<<%= tagName %>>light-dom</<%= tagName %>>`));
       await el.updateComplete;
     });
 
@@ -36,7 +34,7 @@ suite('<%= className %>', () => {
 
   suite('Events ', () => {
     setup(async () => {
-      el = (await fixture(html` <<%= tagName %>></<%= tagName %>> `)) as <%= className %>;
+      el = (await fixture(html`<<%= tagName %>></<%= tagName %>>`));
       await el.updateComplete;
     });
 
@@ -50,7 +48,7 @@ suite('<%= className %>', () => {
   suite('Override ', () => {
     setup(async () => {
       el = (await fixture(
-        html` <<%= tagName %> heading="attribute heading"></<%= tagName %>> `)) as <%= className %>;
+        html`<<%= tagName %> heading="attribute heading"></<%= tagName %>>`));
       await el.updateComplete;
     });
 

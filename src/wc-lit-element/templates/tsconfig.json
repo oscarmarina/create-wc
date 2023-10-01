@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "lib": ["es2021", "DOM", "DOM.Iterable"],
+    "module": "es2020",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "checkJs": true,
+    "strict": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "outDir": "./types",
+    "allowSyntheticDefaultImports": true,
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "rules": {
+          "no-unknown-slot": "warning",
+          "no-unknown-attribute": "warning",
+          "no-unknown-property": "warning",
+          "no-unknown-event": "warning"
+        }
+      }
+    ]
+  },
+  "include": ["src/**/*.js"]
+}

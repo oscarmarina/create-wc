@@ -4,7 +4,7 @@
     "lib": ["es2021", "DOM", "DOM.Iterable"],
     "experimentalDecorators": true,
     "module": "es2020",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "rootDirs": ["./src", "./define", ".test/"],
     "resolveJsonModule": true,
     "declaration": true,
@@ -23,7 +23,17 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
-    "skipLibCheck": true
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "rules": {
+          "no-unknown-slot": "warning",
+          "no-unknown-attribute": "warning",
+          "no-unknown-property": "warning",
+          "no-unknown-event": "warning"
+        }
+      }
+    ]
   },
   "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"]
 }
