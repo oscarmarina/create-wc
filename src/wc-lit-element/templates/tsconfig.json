@@ -6,14 +6,15 @@
     "moduleResolution": "node",
     "allowJs": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "noEmit": false,
+    "emitDeclarationOnly": false,
+    "noEmit": true,
     "checkJs": true,
     "strict": false,
     "noImplicitThis": true,
+    "noImplicitOverride": true,
     "alwaysStrict": true,
-    "outDir": "./types",
     "allowSyntheticDefaultImports": true,
+    
     "plugins": [
       {
         "name": "ts-lit-plugin",
@@ -26,5 +27,5 @@
       }
     ]
   },
-  "include": ["src/**/*.js"]
+  "include": ["src/**/*.js", "define/**/*.js", "test/*.js", "./index.js"]
 }

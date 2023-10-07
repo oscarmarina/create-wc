@@ -13,8 +13,14 @@ import { styles } from './styles/<%= tagName %>-styles.css.js';
  * @slot - This element has a slot
  */
 export class <%= className %> extends LitElement {
+  /**
+   * @override
+   */
   static styles = [styles];
 
+  /**
+   * @override
+   */
   static properties = {
     /**
      * The heading to say "Hello" to.
@@ -33,6 +39,9 @@ export class <%= className %> extends LitElement {
     this.counter = 5;
   }
 
+  /**
+   * @override
+   */
   render() {
     return html`
       <h1>${this.sayHello(this.heading)}!</h1>

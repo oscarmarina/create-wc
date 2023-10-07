@@ -1,1 +1,8 @@
-{}
+{
+  "eslintConfig": {
+    "extends": [
+      "@open-wc",
+      "prettier"
+    ]
+  }
+}

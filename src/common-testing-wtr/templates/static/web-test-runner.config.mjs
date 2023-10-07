@@ -28,7 +28,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Amount of test files per browser to test concurrently */
   concurrency: 1,
 
-  reporters: [summaryReporter(), defaultReporter(), coverageTableReporter()],
+  reporters: [summaryReporter({}), defaultReporter(), coverageTableReporter()],
   
   preserveSymlinks: true,
 

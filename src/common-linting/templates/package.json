@@ -39,13 +39,6 @@
     "parserOptions": {
       "ecmaVersion": "latest"
     },
-    "plugins": [
-      "log-filenames"
-    ],
-    "extends": [
-      "@open-wc",
-      "prettier"
-    ],
     "rules": {
       "class-methods-use-this": "off",
       "no-unused-expressions": [
@@ -91,7 +84,6 @@
     "@open-wc/eslint-config": "^12.0.0",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-log-filenames": "^1.0.6",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",

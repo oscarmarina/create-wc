@@ -1,4 +1,4 @@
-import { html, fixture, assert, fixtureCleanup } from '@open-wc/testing';
+import { html, fixture, assert, expect, fixtureCleanup } from '@open-wc/testing';
 import { <%= className %> } from '../src/<%= className %>.js';
 import '../define/<%= tagName %>.js';
 
@@ -20,11 +20,11 @@ suite('<%= className %>', () => {
 
     suite('Semantic Dom and a11y', () => {
       test('SHADOW DOM - Structure test', async () => {
-        await assert.shadowDom.equalSnapshot(el);
+        await expect(el).shadowDom.to.equalSnapshot();
       });
 
       test('LIGHT DOM - Structure test', async () => {
-        await assert.lightDom.equalSnapshot(el);
+        await expect(el).lightDom.to.equalSnapshot();
       });
       test('a11y', async () => {
         await assert.isAccessible(el);
