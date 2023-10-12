@@ -8,6 +8,8 @@ import { styles } from './styles/<%= tagName %>-styles.css.js';
  * ## `<<%= tagName %>>`
  * An example element.
  *
+ * @attribute heading
+ * @attribute counter
  * @fires counterchange - Indicates when the count changes
  * @slot - This element has a slot
  */

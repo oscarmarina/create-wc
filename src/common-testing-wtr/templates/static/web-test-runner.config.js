@@ -12,9 +12,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   files: [`${outDir}/test/**/*.test.js`],
 
   /** Resolve bare module imports */
-  nodeResolve: {
-    exportConditions: ['browser', 'development'],
-  },
+  nodeResolve: true,
 
   /** Browsers to run tests on */
   browsers: [

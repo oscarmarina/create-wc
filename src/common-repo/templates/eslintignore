@@ -29,6 +29,7 @@ build
 .tmp
 *.tgz
 *.tsbuildinfo
+*.d.ts
 storybook-static
 ## end gitignore
 
