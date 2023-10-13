@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@blockquote/cem-to-markdown-readme": "^1.0.0",
-    "@blockquote/coverage-table-reporter": "^1.0.0",
-    "@blockquote/rollup-plugin-total-bundlesize": "^2.0.1",
+    "@blockquote/coverage-table-reporter": "^1.2.0",
+    "@blockquote/rollup-plugin-total-bundlesize": "^2.1.1",
     "@blockquote/sass-style-template": "^3.0.2",
     "@custom-elements-manifest/analyzer": "^0.8.4",
     "@ungap/global-this": "^0.4.4",
@@ -36,7 +36,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "sort-package-json": "^2.6.0",
     "ts-lit-plugin": "^2.0.0-pre.1",
-    "vite": "^4.4.9"
+    "vite": "^4.4.11"
   },
   "publishConfig": {
     "access": "public"

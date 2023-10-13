@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
+    // https://humanwhocodes.com/snippets/2020/10/create-typescript-declarations-from-javascript-jsdoc/
     "target": "es2021",
     "lib": ["es2021", "DOM", "DOM.Iterable"],
     "module": "es2020",
     "moduleResolution": "node",
     "allowJs": true,
     "declaration": true,
-    "emitDeclarationOnly": false,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
     "checkJs": true,
     "strict": false,
     "noImplicitThis": true,
-    "noImplicitOverride": true,
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
-    
     "plugins": [
       {
         "name": "ts-lit-plugin",
@@ -27,5 +26,5 @@
       }
     ]
   },
-  "include": ["src/**/*.js", "define/**/*.js", "test/*.js", "./index.js"]
+  "include": ["src/**/*.js"]
 }
