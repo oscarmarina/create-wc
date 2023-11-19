@@ -3,7 +3,7 @@ import { property } from 'lit/decorators.js';
 import { styles } from './styles/<%= tagName %>-styles.css.js';
 
 /**
- * ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+ * ![Lit](https://img.shields.io/badge/lit-3.0.0-blue.svg)
  *
  * ## `<<%= tagName %>>`
  * An example element.
