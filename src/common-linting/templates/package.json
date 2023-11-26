@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^12.0.2",
-    "eslint": "^8.53.0",
+    "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
