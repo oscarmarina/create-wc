@@ -33,7 +33,8 @@
           "no-unknown-event": "warning"
         }
       }
-    ]
+    ],
+    "types": ["mocha"]
   },
   "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"]
 }

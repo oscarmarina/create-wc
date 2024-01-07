@@ -68,6 +68,17 @@
       ],
       "import/no-unresolved": "off",
       "import/prefer-default-export": "off",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1,
+          "ignoredNodes": [
+            "PropertyDefinition",
+            "TemplateLiteral > CallExpression"
+          ]
+        }
+      ],
       "lit/no-classfield-shadowing": "off",
       "lit/no-native-attributes": "off"
     }
@@ -83,12 +94,12 @@
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^12.0.2",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
-    "stylelint": "^16.0.2",
-    "stylelint-config-standard-scss": "^12.0.0"
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard-scss": "^13.0.0"
   }
 }

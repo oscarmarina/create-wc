@@ -36,7 +36,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "sort-package-json": "^2.6.0",
     "ts-lit-plugin": "^2.0.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.11"
   },
   "publishConfig": {
     "access": "public"

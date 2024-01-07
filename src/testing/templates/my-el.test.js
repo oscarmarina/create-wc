@@ -28,6 +28,7 @@ suite('<%= className %>', () => {
       test('LIGHT DOM - Structure test', async () => {
         await expect(el).lightDom.to.equalSnapshot();
       });
+
       test('a11y', async () => {
         await assert.isAccessible(el);
       });
