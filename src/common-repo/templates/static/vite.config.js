@@ -1,18 +1,8 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { defineConfig } from 'vite';
 import { rollupPluginHTML as pluginHtml } from '@web/rollup-plugin-html';
-import copy from 'rollup-plugin-copy';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
-
-const copyConfig = {
-  targets: [
-    {
-      src: 'node_modules/@ungap/global-this/index.js',
-      dest: 'dev/web_modules/@ungap/global-this',
-    },
-  ],
-  hook: 'writeBundle',
-};
+import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize-source-dependencies';
 
 /**
  * https://vitejs.dev/config/
@@ -20,8 +10,9 @@ const copyConfig = {
  */
 
 export default defineConfig({
+  plugins: [externalizeSourceDependencies(['/__web-dev-server__web-socket.js']), pluginHtml(), totalBundlesize()],
   build: {
-    target: ['chrome70'],
+    target: ['chrome71'],
     outDir: 'dev',
     rollupOptions: {
       input: 'demo/*.html',
@@ -29,20 +20,6 @@ export default defineConfig({
         dir: 'dev/',
         format: 'es',
       },
-      plugins: [
-        pluginHtml({
-          transformHtml: [
-            (html) =>
-              html.replace(
-                '<meta charset="utf-8">',
-                `<meta charset="utf-8">
-        <script src="./web_modules/@ungap/global-this/index.js"></script>`,
-              ),
-          ],
-        }),
-        copy(copyConfig),
-        totalBundlesize(),
-      ],
     },
   },
 });
