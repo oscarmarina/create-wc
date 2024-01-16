@@ -1,45 +1,42 @@
 # Web Component with Lit - Scaffolding
 
-This scaffold generator extends and customizes the core parts of [@open-wc/create](https://open-wc.org/docs/development/generator/#extending) providing a starting point for creating a web component with [Lit](https://lit.dev/).
+This scaffold generator extends and customizes the core parts of **[@open-wc/create](https://open-wc.org/docs/development/generator/#extending)** providing a starting point for creating a web component with **[Lit](https://lit.dev/)**
 
 ## Development tools:
 
-- ### [open-wc](https://open-wc.org/) & [modern-web](https://modern-web.dev/)
+- ### [Open Web Components](https://open-wc.org/) & [Modern Web](https://modern-web.dev/)
 
   - Scaffold
-  - Lint (es-lint)
-  - Format (prettier)
-  - Test (web-test-runner)
+  - Lint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`es-lint`
+  - Format&nbsp;&nbsp;&nbsp;`prettier`
+  - Test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`web-test-runner`
 
-- ### [vitejs](https://vitejs.dev/)
+- ### [Vite](https://vitejs.dev/)
 
-  - Dev Server
-  - Static demo
-  - TypeScript
+  - [De Server](https://vitejs.dev/config/server-options.html)
+  - [Preview](https://vitejs.dev/config/preview-options.html)
+  - [Build](https://vitejs.dev/guide/build.html)
+    - TypeScript & [tsconfig](https://github.com/lit/lit/blob/main/packages/lit-starter-ts/tsconfig.json)
 
-- ### [sass](https://github.com/oscarmarina/sass-style-template)
+- ### [Sass](https://github.com/oscarmarina/sass-style-template)
 
-  - SCSS watcher with autoprefixer
+  - SCSS watcher with [sass](https://www.npmjs.com/package/sass)
 
-- ### miscellany
-  - [tsconfig](https://github.com/lit/lit/blob/main/packages/lit-starter-ts/tsconfig.json)
+- ### analyze
   - [Custom Elements Manifest](https://custom-elements-manifest.open-wc.org/blog/intro/)
-  - [ESLint 8 - decorators](https://github.com/eslint/eslint/issues/15299#issuecomment-968099681)
+    - [Plugin: cem-to-markdown-readme](https://github.com/oscarmarina/cem-to-markdown-readme)
 
 <hr>
 
 ## Installation
 
 ```bash
-npm init @blockquote/wc
+npm init @blockquote/wc@latest
 ```
 
 <hr>
-<br>
 
-## open-wc & modern-web
-
-### - Linting and formatting
+### Linting and formatting
 
 To scan the project for linting and formatting errors, run
 
@@ -53,11 +50,10 @@ To automatically fix linting and formatting errors, run
 npm run format
 ```
 
-### - Testing with Web Test Runner
+### Testing with Web Test Runner
 
 - playwright
-- mocha-style reporter
-- coverage config
+- coverage
 - TDD option
 
 <br>
@@ -67,56 +63,49 @@ npm run format
 ```js
 import { playwrightLauncher } from '@web/test-runner-playwright';
 import { defaultReporter, summaryReporter } from '@web/test-runner';
-import { coverageTableReporter } from '@blockquote/coverage-table-reporter'
+import { coverageTableReporter } from '@blockquote/coverage-table-reporter';
 
+const filteredLogs = ['in dev mode'];
 const outDir = process.env.OUTDIR || '.';
 
-export default ({
+export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   files: [`${outDir}/test/**/*.test.js`],
-
-  nodeResolve: {
-    exportConditions: ['browser', 'development'],
-  },
-
-  /** Browsers to run tests on */
+  nodeResolve: true,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
     playwrightLauncher({ product: 'webkit' }),
   ],
-
-  /** Amount of browsers to run concurrently */
   concurrentBrowsers: 2,
-
-  /** Amount of test files per browser to test concurrently */
   concurrency: 1,
-
-  reporters: [
-    defaultReporter(),
-    summaryReporter(),
-    coverageTableReporter()
-  ],
-
+  reporters: [summaryReporter({}), defaultReporter(), coverageTableReporter()],
+  preserveSymlinks: true,
   coverage: true,
   coverageConfig: {
-    report: true,
     reportDir: `${outDir}/test/coverage`,
+    reporters: ['lcov', 'lcovonly', 'json'],
     threshold: {
       statements: 80,
       branches: 80,
       functions: 80,
       lines: 80,
     },
+    include: ['**/src/**/*', '**/define/**/*'],
   },
-
   testFramework: {
     config: {
       ui: 'tdd',
-      timeout: 4000
+      timeout: 4000,
     },
   },
-
-  ...
-};
+  filterBrowserLogs(log) {
+    for (const arg of log.args) {
+      if (typeof arg === 'string' && filteredLogs.some((l) => arg.includes(l))) {
+        return false;
+      }
+    }
+    return true;
+  },
+});
 ```
 
 To execute a single test run:
@@ -132,9 +121,6 @@ npm run test:watch
 ```
 
 <hr>
-<br>
-
-## vite
 
 ### dev server
 
@@ -150,102 +136,50 @@ npm run vite
 npm run dev:vite
 ```
 
-### [server static-deploy](https://vitejs.dev/guide/static-deploy.html)
-
 ```bash
 npm run preview:vite
 ```
 
 <hr>
-<br>
 
-## sass
-
-### scss watcher with autoprefixer
-
-```bash
-npm run sass:watch
-```
-
-<hr>
-<br>
-
-## Custom Element Manifest
-
-### Generating README from custom-elements.json
-
-```bash
-npm run analyze
-```
-
-<hr>
-<br>
-
-## TypeScript
-
-### build ts
+### TypeScript
 
 ```bash
 npm run build
 ```
 
 <hr>
-<br>
 
-### Start:
+### sass
 
-#### `"start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\""`
+#### scss watcher
 
 ```bash
+npm run sass:watch
+```
+
+<hr>
+
+### Custom Element Manifest
+
+#### Generating README from custom-elements.json
+
+```bash
+npm run analyze
+```
+
+<hr>
+
+### Start
+
+```bash
+// "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\""
 npm start
 ```
 
 **Example:**
 
-### [open-wc-vitejs-sass](https://github.com/oscarmarina/open-wc-vitejs-sass)
+> - https://github.com/oscarmarina/blockquote-web-components
 
-<hr>
 <br>
-
-## File structure JS & TS
-
-```css
-./
-├── my-el/
-│   ├── .husky/
-│   │   ├── _/
-│   │   │   ├── .gitignore
-│   │   │   └── husky.sh
-│   │   └── pre-commit
-│   ├── define/
-│   │   └── my-el.{js,ts}
-│   ├── demo/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── styles/
-│   │   │   ├── MyEl-styles.{js,ts}
-│   │   │   └── MyEl.scss
-│   │   └── MyEl.{js,ts}
-│   ├── test/
-│   │   └── my-el.test.{js,ts}
-│   ├── .editorconfig
-│   ├── .gitignore
-│   ├── index.html
-│   ├── index.{js,ts}
-│   ├── LICENSE
-│   ├── package.json
-│   ├── README.md
-│   ├── vite.config.js
-│   └── web-test-runner.config.mjs
-```
-
 <hr>
-
-### the component definition is generated in its own folder
-
-```css
-./
-├── my-el/
-│   ├── define/
-│   │   └── my-el.{js,ts}
-```
