@@ -34,6 +34,12 @@ This scaffold generator extends and customizes the core parts of **[@open-wc/cre
 npm init @blockquote/wc@latest
 ```
 
+### Start
+
+```bash
+npm start
+```
+
 <hr>
 
 ### Linting and formatting
@@ -170,16 +176,8 @@ npm run analyze
 
 <hr>
 
-### Start
-
-```bash
-// "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\""
-npm start
-```
-
 **Example:**
 
 > - https://github.com/oscarmarina/blockquote-web-components
 
-<br>
 <hr>
