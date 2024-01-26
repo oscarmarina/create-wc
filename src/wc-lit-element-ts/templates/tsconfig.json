@@ -30,11 +30,11 @@
           "no-unknown-slot": "warning",
           "no-unknown-attribute": "warning",
           "no-unknown-property": "warning",
-          "no-unknown-event": "warning"
-        }
-      }
+          "no-unknown-event": "warning",
+        },
+      },
     ],
-    "types": ["mocha"]
+    "types": ["mocha"],
   },
-  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"]
+  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"],
 }
