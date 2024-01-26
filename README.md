@@ -174,6 +174,12 @@ npm run sass:watch
 npm run analyze
 ```
 
+### Husky
+
+Husky is pre-installed.
+
+After `git init`; run `npm run prepare` to set up Husky and its Git hooks.
+
 <hr>
 
 **Example:**
