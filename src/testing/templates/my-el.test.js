@@ -12,7 +12,6 @@ suite('<%= className %>', () => {
   suite('Default', () => {
     setup(async () => {
       el = await fixture(html`<<%= tagName %>>light-dom</<%= tagName %>>`);
-      await el.updateComplete;
     });
 
     test('has a default heading "Hey there" and counter 5', () => {
@@ -38,7 +37,6 @@ suite('<%= className %>', () => {
   suite('Events ', () => {
     setup(async () => {
       el = await fixture(html`<<%= tagName %>></<%= tagName %>>`);
-      await el.updateComplete;
     });
 
     test('increases the counter on button click', () => {
@@ -50,7 +48,6 @@ suite('<%= className %>', () => {
   suite('Override ', () => {
     setup(async () => {
       el = await fixture(html`<<%= tagName %> heading="attribute heading"></<%= tagName %>>`);
-      await el.updateComplete;
     });
 
     test('can override the heading via attribute', () => {
