@@ -36,6 +36,13 @@ export const WcLitElementMixin = (subclass) =>
 
       await super.execute();
       const { tagName, className } = this.templateData;
+
+      // write & rename index template
+      this.copyTemplate(
+        `${__dirname}/templates/index.js`,
+        this.destinationPath(`src/index.js`),
+      );
+
       // write & rename el class template
       this.copyTemplate(
         `${__dirname}/templates/MyEl.js`,

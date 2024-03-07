@@ -1,7 +1,7 @@
 {
   "exports": {
     ".": {
-      "default": "./dist/index.js"
+      "default": "./dist/src/index.js"
     },
     "./package.json": {
       "default": "./package.json"
@@ -13,14 +13,14 @@
       "default": "./dist/define/<%= tagName %>.js"
     },
     "./index.js": {
-      "default": "./dist/index.js"
+      "default": "./dist/src/index.js"
     },
     "./src/styles/<%= tagName %>-styles.css.js": {
       "default": "./dist/src/styles/<%= tagName %>-styles.css.js"
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
   "files": [
     "/dist/",
     "/dist/index.*",
@@ -33,6 +33,6 @@
   },
   "devDependencies": {
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }

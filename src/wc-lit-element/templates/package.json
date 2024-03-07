@@ -1,7 +1,7 @@
 {
   "exports": {
     ".": {
-      "default": "./index.js"
+      "default": "./src/index.js"
     },
     "./package.json": {
       "default": "./package.json"
@@ -13,14 +13,14 @@
       "default": "./define/<%= tagName %>.js"
     },
     "./index.js": {
-      "default": "./index.js"
+      "default": "./src/index.js"
     },
     "./src/styles/<%= tagName %>-styles.css.js": {
       "default": "./src/styles/<%= tagName %>-styles.css.js"
     }
   },
-  "main": "index.js",
-  "module": "index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "files": [
     "/define/",
     "/src/",

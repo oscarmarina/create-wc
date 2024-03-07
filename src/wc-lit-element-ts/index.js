@@ -37,6 +37,12 @@ export const TsWcLitElementMixin = (subclass) =>
       await super.execute();
       const { tagName, className } = this.templateData;
 
+      // write & rename index template
+      this.copyTemplate(
+        `${__dirname}/templates/index.ts`,
+        this.destinationPath(`src/index.ts`),
+      );
+
       // write & rename el class template
       this.copyTemplate(
         `${__dirname}/templates/MyEl.ts`,
