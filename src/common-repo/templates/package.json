@@ -30,12 +30,12 @@
     "@blockquote/rollup-plugin-externalize-source-dependencies": "^1.0.0",
     "@blockquote/rollup-plugin-total-bundlesize": "^2.1.2",
     "@blockquote/sass-style-template": "^3.0.2",
-    "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@custom-elements-manifest/analyzer": "^0.9.3",
     "@web/rollup-plugin-html": "^2.1.2",
     "concurrently": "^8.2.2",
-    "sort-package-json": "^2.7.0",
+    "sort-package-json": "^2.8.0",
     "ts-lit-plugin": "^2.0.2",
-    "vite": "^5.0.12"
+    "vite": "^5.1.5"
   },
   "publishConfig": {
     "access": "public"
