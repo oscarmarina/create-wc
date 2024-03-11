@@ -3,7 +3,7 @@ import '../define/<%= tagName %>.js';
 
 suite('<%= className %>', () => {
   /**
-   * @type {import('../index').<%= className %>}
+   * @type {import('../src/index').<%= className %>}
    */
   let el;
 
