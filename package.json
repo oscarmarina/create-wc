@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "1.96.4",
+  "version": "1.96.5",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "LitElement",
@@ -11,10 +11,10 @@
     "openwc",
     "generator"
   ],
-  "homepage": "https://github.com/oscarmarina/create",
+  "homepage": "https://github.com/oscarmarina/create-wc",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oscarmarina/create.git"
+    "url": "git+https://github.com/oscarmarina/create-wc.git"
   },
   "license": "MIT",
   "author": "Oscar Marina",
