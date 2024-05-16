@@ -1,6 +1,7 @@
 ## editors
 /.idea
 /.vscode
+/*.code-workspace
 
 ## system files
 .DS_Store
@@ -11,6 +12,8 @@ coverage/
 ## npm
 node_modules
 npm-debug.log
+.npmrc
+*-debug.log
 yarn-error.log
 
 ## temp folders
@@ -27,3 +30,5 @@ stats.html
 
 ## browserstack
 local.log
+
+
