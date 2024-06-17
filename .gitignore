@@ -1,20 +1,21 @@
 ## editors
-/.idea
-/.vscode
-/*.code-workspace
+.idea
+.vscode
+*.code-workspace
 
 ## system files
-.DS_Store
+**/.DS_Store
 
 ## code coverage folders
-coverage/
+**/coverage
 
 ## npm
-node_modules
+**/node_modules
+**/npm-debug.log
 npm-debug.log
 .npmrc
-*-debug.log
-yarn-error.log
+**/*-debug.log
+**/yarn-error.log
 
 ## temp folders
 /.tmp/
@@ -23,12 +24,12 @@ yarn-error.log
 yarn.lock
 
 ## build output
-dist
-build-stats.json
-stats.html
+**/dist
+**/build-stats.json
+**/stats.html
 .rpt2_cache
 
 ## browserstack
-local.log
+**/local.log
 
 
