@@ -32,10 +32,15 @@ export const CommonRepoMixin = (subclass) =>
       // write and rename .gitignore
       this.copyTemplate(`${__dirname}/templates/gitignore`, this.destinationPath(`.gitignore`));
 
-      // write and rename .eslintignore
+      // write and rename .prettierignore
       this.copyTemplate(
-        `${__dirname}/templates/eslintignore`,
-        this.destinationPath(`.eslintignore`),
+        `${__dirname}/templates/prettierignore`,
+        this.destinationPath(`.prettierignore`),
+      );
+
+      this.copyTemplate(
+        `${__dirname}/templates/eslint.config.js`,
+        this.destinationPath(`eslint.config.js`,),
       );
 
       // copy all other files

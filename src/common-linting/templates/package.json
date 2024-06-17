@@ -1,13 +1,13 @@
 {
   "scripts": {
     "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
-    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
-    "format:prettier": "prettier \"**/*.{js,ts,json,html}\" --write --ignore-path .eslintignore",
-    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
+    "format:eslint": "eslint .",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html}\" --write --ignore-path .prettierignore",
+    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .prettierignore",
     "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
-    "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .eslintignore",
-    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore"
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .prettierignore",
+    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .prettierignore"
   },
   "lint-staged": {
     "**/*.{js,ts,html}": [
@@ -35,55 +35,7 @@
       }
     ]
   },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": "latest"
-    },
-    "rules": {
-      "class-methods-use-this": "off",
-      "no-unused-expressions": [
-        "error",
-        {
-          "allowShortCircuit": true,
-          "allowTernary": true
-        }
-      ],
-      "object-curly-newline": "off",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-          "ignorePackages": true
-        }
-      ],
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "**/test/**/*.{js,ts}",
-            "**/*.config.{js,ts,mjs,cjs}",
-            "**/*.conf.{js,ts,mjs,cjs}"
-          ]
-        }
-      ],
-      "import/no-unresolved": "off",
-      "import/prefer-default-export": "off",
-      "indent": [
-        "error",
-        2,
-        {
-          "SwitchCase": 1,
-          "ignoredNodes": [
-            "PropertyDefinition",
-            "TemplateLiteral > CallExpression"
-          ]
-        }
-      ],
-      "lit/no-classfield-shadowing": "off",
-      "lit/no-native-attributes": "off",
-      "lit-a11y/click-events-have-key-events": "off"
-    }
-  },
+
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
     "rules": {
@@ -97,10 +49,14 @@
     "@open-wc/eslint-config": "^12.0.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
+    "@html-eslint/eslint-plugin": "^0.24.1",
+    "@html-eslint/parser": "^0.24.1",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "stylelint": "^16.5.0",
-    "stylelint-config-standard-scss": "^13.1.0"
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0"
   }
 }

@@ -30,3 +30,11 @@ screenshots/.diff
 **/*.tsbuildinfo
 **/storybook-static
 ## end gitignore
+
+## specific prettierignore
+**/*.d.ts
+**/*.config.*
+**/package-lock.json
+**/*.min.js
+**/*-styles.*
+**/CHANGELOG.md
