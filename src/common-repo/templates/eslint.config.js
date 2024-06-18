@@ -18,34 +18,23 @@ const compat = new FlatCompat({
 export default [
   {
     ignores: [
-      '.idea',
-      '.vscode',
-      '*.code-workspace',
-      '**/.DS_Store',
-      '**/node_modules',
-      '**/npm-debug.log',
-      '**/*-debug.log',
-      '**/yarn-error.log',
+      '**/.idea',
+      '**/.vscode',
+      '**/.code-workspace',
       '**/coverage',
-      '**/coverage/',
       '**/reports',
       '**/__snapshots__',
-      'screenshots/.current',
-      'screenshots/.diff',
+      '**/screenshots',
       '**/_site',
       '**/dist',
       '**/dev',
       '**/build',
       '**/.tmp',
-      '**/*.tgz',
-      '**/*.tsbuildinfo',
-      '**/storybook-static',
       '**/*.d.ts',
+      '**/storybook-static',
       '**/*.config.*',
-      '**/package-lock.json',
       '**/*.min.js',
       '**/*-styles.*',
-      '**/CHANGELOG.md',
     ],
   },
   ...compat.extends('@open-wc', 'plugin:@typescript-eslint/recommended', 'prettier'),
@@ -59,6 +48,7 @@ export default [
     },
     rules: {
       '@html-eslint/indent': ['error', 2],
+      '@html-eslint/no-multiple-h1': 'error',
     },
   },
   {
@@ -97,7 +87,6 @@ export default [
       ],
 
       'object-curly-newline': 'off',
-
       'import/extensions': [
         'error',
         'always',
@@ -105,7 +94,6 @@ export default [
           ignorePackages: true,
         },
       ],
-
       'import/no-extraneous-dependencies': [
         'error',
         {
@@ -116,10 +104,8 @@ export default [
           ],
         },
       ],
-
       'import/no-unresolved': 'off',
       'import/prefer-default-export': 'off',
-
       indent: [
         'error',
         2,
@@ -128,7 +114,6 @@ export default [
           ignoredNodes: ['PropertyDefinition', 'TemplateLiteral > *'],
         },
       ],
-
       'lit/no-classfield-shadowing': 'off',
       'lit/no-native-attributes': 'off',
       'lit-a11y/click-events-have-key-events': 'off',

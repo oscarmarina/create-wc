@@ -1,7 +1,7 @@
 ## editors
-.idea
-.vscode
-*.code-workspace
+**/.idea
+**/.vscode
+**/.code-workspace
 
 ## system files
 **/.DS_Store
@@ -16,9 +16,7 @@
 **/coverage
 **/reports
 **/__snapshots__
-screenshots/.current
-screenshots/.diff
-
+**/screenshots
 
 ## build
 **/_site
