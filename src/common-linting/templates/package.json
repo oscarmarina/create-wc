@@ -35,7 +35,6 @@
       }
     ]
   },
-
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
     "rules": {
@@ -47,16 +46,15 @@
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^12.0.3",
+    "@html-eslint/eslint-plugin": "^0.25.0",
+    "@html-eslint/parser": "^0.25.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "@html-eslint/eslint-plugin": "^0.25.0",
-    "@html-eslint/parser": "^0.24.1",
+    "typescript-eslint": "^7.13.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
     "stylelint": "^16.6.1",
-    "stylelint-config-standard-scss": "^13.1.0",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
-    "@typescript-eslint/parser": "^7.13.1"
+    "stylelint-config-standard-scss": "^13.1.0"
   }
 }
