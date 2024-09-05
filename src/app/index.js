@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import prompts from 'prompts';
 // import commandLineArgs from 'command-line-args';
-import { executeMixinGenerator } from '@open-wc/create/dist/core.js';
+import {executeMixinGenerator} from '@open-wc/create/dist/core.js';
 
 import header from './header.js';
-import { gatherMixins } from './gatherMixins.js';
+import {gatherMixins} from './gatherMixins.js';
 import Generator from '../Generator.js';
 
 export const AppMixin = (subclass) =>
@@ -34,8 +34,8 @@ export const AppMixin = (subclass) =>
           name: 'nameSpaceSelect',
           message: 'Would you like to use namespace (without @)?',
           choices: [
-            { title: 'Yes', value: 'true' },
-            { title: 'No', value: 'false' },
+            {title: 'Yes', value: 'true'},
+            {title: 'No', value: 'false'},
           ],
         },
         {
@@ -49,8 +49,8 @@ export const AppMixin = (subclass) =>
           name: 'typescript',
           message: 'Would you like to use typescript?',
           choices: [
-            { title: 'No', value: 'false' },
-            { title: 'Yes', value: 'true' },
+            {title: 'No', value: 'false'},
+            {title: 'Yes', value: 'true'},
           ],
         },
       ];

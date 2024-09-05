@@ -1,5 +1,5 @@
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
+import {fileURLToPath} from 'url';
+import path, {dirname} from 'path';
 import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,17 +16,17 @@ export const CommonRepoMixin = (subclass) =>
       };
 
       await super.execute();
-      const { tagName } = this.templateData;
+      const {tagName} = this.templateData;
 
       this.copyTemplateJsonInto(
         `${__dirname}/templates/package.json`,
-        this.destinationPath('package.json'),
+        this.destinationPath('package.json')
       );
 
       // write & rename el scss template
       this.copyTemplate(
         `${__dirname}/templates/styles/my-el.scss`,
-        this.destinationPath(`src/styles/${tagName}.scss`),
+        this.destinationPath(`src/styles/${tagName}.scss`)
       );
 
       // write and rename .gitignore
@@ -35,12 +35,12 @@ export const CommonRepoMixin = (subclass) =>
       // write and rename .prettierignore
       this.copyTemplate(
         `${__dirname}/templates/prettierignore`,
-        this.destinationPath(`.prettierignore`),
+        this.destinationPath(`.prettierignore`)
       );
 
       this.copyTemplate(
         `${__dirname}/templates/eslint.config.js`,
-        this.destinationPath(`eslint.config.js`,),
+        this.destinationPath(`eslint.config.js`)
       );
 
       // copy all other files
@@ -50,7 +50,7 @@ export const CommonRepoMixin = (subclass) =>
     async end() {
       await super.end();
 
-      const { destinationPath } = this.options;
+      const {destinationPath} = this.options;
 
       if (destinationPath) {
         const huskyPreCommit = path.join(this.options.destinationPath, '.husky/pre-commit');

@@ -1,8 +1,8 @@
 /* eslint-disable max-classes-per-file */
-import { fileURLToPath } from 'url';
-import { join, dirname } from 'path';
-import { processTemplate, readFileFromPath } from '@open-wc/create/dist/core.js';
-import { CommonRepoMixin } from '../common-repo/index.js';
+import {fileURLToPath} from 'url';
+import {join, dirname} from 'path';
+import {processTemplate, readFileFromPath} from '@open-wc/create/dist/core.js';
+import {CommonRepoMixin} from '../common-repo/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,7 +11,7 @@ const compose = (...fns) =>
   fns.reduce(
     (f, g) =>
       (...args) =>
-        f(g(...args)),
+        f(g(...args))
   );
 const safeReduce = (f, initial) => (xs) => (Array.isArray(xs) ? xs.reduce(f, initial) : xs);
 
@@ -35,30 +35,27 @@ export const TsWcLitElementMixin = (subclass) =>
       this.templateData.featureReadmes = safeFeatureReadme(this.options.features);
 
       await super.execute();
-      const { tagName, className } = this.templateData;
+      const {tagName, className} = this.templateData;
 
       // write & rename index template
-      this.copyTemplate(
-        `${__dirname}/templates/index.ts`,
-        this.destinationPath(`src/index.ts`),
-      );
+      this.copyTemplate(`${__dirname}/templates/index.ts`, this.destinationPath(`src/index.ts`));
 
       // write & rename el class template
       this.copyTemplate(
         `${__dirname}/templates/MyEl.ts`,
-        this.destinationPath(`src/${className}.ts`),
+        this.destinationPath(`src/${className}.ts`)
       );
 
       // write & rename el styles template
       this.copyTemplate(
         `${__dirname}/templates/styles/my-el-styles.css.ts`,
-        this.destinationPath(`src/styles/${tagName}-styles.css.ts`),
+        this.destinationPath(`src/styles/${tagName}-styles.css.ts`)
       );
 
       // write & rename el registration template
       this.copyTemplate(
         `${__dirname}/templates/my-el.ts`,
-        this.destinationPath(`define/${tagName}.ts`),
+        this.destinationPath(`define/${tagName}.ts`)
       );
 
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);
@@ -72,15 +69,15 @@ export const TsWcLitElementPackageMixin = (subclass) =>
       // write & rename package.json
       this.copyTemplateJsonInto(
         `${__dirname}/templates/package.json`,
-        this.destinationPath('package.json'),
+        this.destinationPath('package.json')
       );
       this.copyTemplate(
         `${__dirname}/templates/custom-elements.json`,
-        this.destinationPath('custom-elements.json'),
+        this.destinationPath('custom-elements.json')
       );
       this.copyTemplate(
         `${__dirname}/templates/tsconfig.json`,
-        this.destinationPath('tsconfig.json'),
+        this.destinationPath('tsconfig.json')
       );
     }
 

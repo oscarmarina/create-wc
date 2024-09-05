@@ -1,8 +1,8 @@
 /* eslint-disable max-classes-per-file */
-import { fileURLToPath } from 'url';
-import { join, dirname } from 'path';
-import { processTemplate, readFileFromPath } from '@open-wc/create/dist/core.js';
-import { CommonRepoMixin } from '../common-repo/index.js';
+import {fileURLToPath} from 'url';
+import {join, dirname} from 'path';
+import {processTemplate, readFileFromPath} from '@open-wc/create/dist/core.js';
+import {CommonRepoMixin} from '../common-repo/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,7 +11,7 @@ const compose = (...fns) =>
   fns.reduce(
     (f, g) =>
       (...args) =>
-        f(g(...args)),
+        f(g(...args))
   );
 const safeReduce = (f, initial) => (xs) => (Array.isArray(xs) ? xs.reduce(f, initial) : xs);
 
@@ -35,30 +35,27 @@ export const WcLitElementMixin = (subclass) =>
       this.templateData.featureReadmes = safeFeatureReadme(this.options.features);
 
       await super.execute();
-      const { tagName, className } = this.templateData;
+      const {tagName, className} = this.templateData;
 
       // write & rename index template
-      this.copyTemplate(
-        `${__dirname}/templates/index.js`,
-        this.destinationPath(`src/index.js`),
-      );
+      this.copyTemplate(`${__dirname}/templates/index.js`, this.destinationPath(`src/index.js`));
 
       // write & rename el class template
       this.copyTemplate(
         `${__dirname}/templates/MyEl.js`,
-        this.destinationPath(`src/${className}.js`),
+        this.destinationPath(`src/${className}.js`)
       );
 
       // write & rename el styles template
       this.copyTemplate(
         `${__dirname}/templates/styles/my-el-styles.css.js`,
-        this.destinationPath(`src/styles/${tagName}-styles.css.js`),
+        this.destinationPath(`src/styles/${tagName}-styles.css.js`)
       );
 
       // write & rename el registration template
       this.copyTemplate(
         `${__dirname}/templates/my-el.js`,
-        this.destinationPath(`define/${tagName}.js`),
+        this.destinationPath(`define/${tagName}.js`)
       );
 
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);
@@ -72,11 +69,11 @@ export const WcLitElementPackageMixin = (subclass) =>
       // write & rename package.json
       this.copyTemplateJsonInto(
         `${__dirname}/templates/package.json`,
-        this.destinationPath('package.json'),
+        this.destinationPath('package.json')
       );
       this.copyTemplate(
         `${__dirname}/templates/custom-elements.json`,
-        this.destinationPath('custom-elements.json'),
+        this.destinationPath('custom-elements.json')
       );
     }
 

@@ -1,13 +1,13 @@
 // js
-import { CommonLintingMixin } from '../common-linting/index.js';
-import { CommonTestingWtrMixin } from '../common-testing-wtr/index.js';
+import {CommonLintingMixin} from '../common-linting/index.js';
+import {CommonTestingWtrMixin} from '../common-testing-wtr/index.js';
 
-import { WcLitElementPackageMixin } from '../wc-lit-element/index.js';
-import { TestingMixin, TestingScaffoldMixin } from '../testing/index.js';
+import {WcLitElementPackageMixin} from '../wc-lit-element/index.js';
+import {TestingMixin, TestingScaffoldMixin} from '../testing/index.js';
 
 // ts
-import { TsWcLitElementPackageMixin } from '../wc-lit-element-ts/index.js';
-import { TsTestingMixin, TsTestingScaffoldMixin } from '../testing-ts/index.js';
+import {TsWcLitElementPackageMixin} from '../wc-lit-element-ts/index.js';
+import {TsTestingMixin, TsTestingScaffoldMixin} from '../testing-ts/index.js';
 
 export function gatherMixins(options) {
   const mixins = [];
