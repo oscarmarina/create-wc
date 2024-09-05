@@ -62,6 +62,7 @@ export default [
       '**/dev',
       '**/build',
       '**/.tmp',
+      '**/.wireit',
       '**/*.d.ts',
       '**/storybook-static',
       '**/*.config.*',
