@@ -4,7 +4,7 @@
     <title>Demo - <%= tagName %></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="icon" href="data:image/x-icon;base64,B" />
     <meta name="description" content="<%= tagName %>" />
     <style>
       html,
@@ -19,16 +19,16 @@
     <div id="demo"></div>
 
     <script type="module">
-      import { html, render } from 'lit';
+      import {html, render} from 'lit';
       import '../define/<%= tagName %>.ts';
 
       const heading = 'World!';
       render(
         html`<<%= tagName %>
-          @counterchange="${ev => console.log('==>', ev.detail)}" .heading=${heading}
+          @counterchange="${(ev) => console.log('==>', ev.detail)}" .heading=${heading}
           >some light-dom</<%= tagName %>
         >`,
-        document.querySelector('#demo'),
+        document.querySelector('#demo')
       );
     </script>
   </body>

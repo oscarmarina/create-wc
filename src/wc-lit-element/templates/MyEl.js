@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit';
-import { styles } from './styles/<%= tagName %>-styles.css.js';
+import {html, LitElement} from 'lit';
+import {styles} from './styles/<%= tagName %>-styles.css.js';
 
 /**
  * ![Lit](https://img.shields.io/badge/lit-3.0.0-blue.svg)
@@ -25,12 +25,12 @@ export class <%= className %> extends LitElement {
     /**
      * The heading to say "Hello" to.
      */
-    heading: { type: String },
+    heading: {type: String},
 
     /**
      * The number of times the button has been clicked.
      */
-    counter: { type: Number },
+    counter: {type: Number},
   };
 
   constructor() {
@@ -53,7 +53,7 @@ export class <%= className %> extends LitElement {
 
   #onClick() {
     this.counter += 1;
-    this.dispatchEvent(new CustomEvent('counterchange', { detail: this.counter }));
+    this.dispatchEvent(new CustomEvent('counterchange', {detail: this.counter}));
   }
 
   /**
