@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* process.env.npm_lifecycle_event, process.env.npm_lifecycle_script, process.env.OUTDIR; */
-import { playwrightLauncher } from '@web/test-runner-playwright';
-import { defaultReporter, summaryReporter } from '@web/test-runner';
-import { coverageTableReporter } from '@blockquote/coverage-table-reporter';
+import {playwrightLauncher} from '@web/test-runner-playwright';
+import {defaultReporter, summaryReporter} from '@web/test-runner';
+import {coverageTableReporter} from '@blockquote/coverage-table-reporter';
 
 const filteredLogs = ['in dev mode'];
 const outDir = process.env.OUTDIR || '.';
@@ -15,10 +15,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   nodeResolve: true,
 
   /** Browsers to run tests on */
-  browsers: [
-    playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'webkit' }),
-  ],
+  browsers: [playwrightLauncher({product: 'chromium'}), playwrightLauncher({product: 'webkit'})],
 
   /** Amount of browsers to run concurrently */
   concurrentBrowsers: 2,
@@ -27,7 +24,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   concurrency: 1,
 
   reporters: [summaryReporter({}), defaultReporter(), coverageTableReporter()],
-  
+
   preserveSymlinks: true,
 
   coverage: true,
@@ -48,14 +45,14 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     // https://mochajs.org/api/mocha
     config: {
       ui: 'tdd',
-      timeout: 4000
+      timeout: 4000,
     },
   },
 
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
     for (const arg of log.args) {
-      if (typeof arg === 'string' && filteredLogs.some(l => arg.includes(l))) {
+      if (typeof arg === 'string' && filteredLogs.some((l) => arg.includes(l))) {
         return false;
       }
     }

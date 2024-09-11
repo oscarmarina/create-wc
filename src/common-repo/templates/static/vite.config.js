@@ -1,6 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
-import { defineConfig } from 'vite';
-import { rollupPluginHTML as pluginHtml } from '@web/rollup-plugin-html';
+import {defineConfig} from 'vite';
+import {rollupPluginHTML as pluginHtml} from '@web/rollup-plugin-html';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize-source-dependencies';
 
@@ -10,7 +10,11 @@ import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize
  */
 
 export default defineConfig({
-  plugins: [externalizeSourceDependencies(['/__web-dev-server__web-socket.js']), pluginHtml(), totalBundlesize()],
+  plugins: [
+    externalizeSourceDependencies(['/__web-dev-server__web-socket.js']),
+    pluginHtml(),
+    totalBundlesize(),
+  ],
   build: {
     target: ['chrome71'],
     outDir: 'dev',

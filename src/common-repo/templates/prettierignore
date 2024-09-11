@@ -32,7 +32,6 @@
 
 ## specific prettierignore
 **/*.d.ts
-**/*.config.*
 **/package-lock.json
 **/*.min.js
 **/*-styles.*
