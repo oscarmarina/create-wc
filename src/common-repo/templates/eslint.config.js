@@ -95,7 +95,7 @@ export default [
         2,
         {
           SwitchCase: 1,
-          ignoredNodes: ['PropertyDefinition', 'TemplateLiteral > *'],
+          ignoredNodes: ['PropertyDefinition', 'TemplateLiteral *'],
         },
       ],
       'import/extensions': [
