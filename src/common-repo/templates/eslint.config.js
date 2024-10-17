@@ -84,6 +84,8 @@ const litFilesRules = {
     'lit/lifecycle-super': 'error',
     'lit/no-native-attributes': 'off',
     'lit/no-useless-template-literals': 'off',
+    'lit/binding-positions': 'off',
+    'lit/no-invalid-html': 'off',
   },
 };
 
