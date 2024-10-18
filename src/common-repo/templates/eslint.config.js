@@ -10,6 +10,7 @@ import html from '@html-eslint/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
+import globals from 'globals';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,8 +19,7 @@ const fileTypes = '{js,ts,mjs}';
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
+  resolvePluginsRelativeTo: __dirname,
 });
 
 // eslint-plugin-import
@@ -147,6 +147,7 @@ export default [
       '**/*.workspace.*',
     ],
   },
+  js.configs.recommended,
   ...compat.extends('plugin:lit-a11y/recommended'),
   ...importFilesConfig,
   importFilesRules,
@@ -163,7 +164,12 @@ export default [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+      },
     },
+
     rules: {
       'class-methods-use-this': 'off',
       'no-unused-expressions': [
