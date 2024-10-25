@@ -39,7 +39,7 @@
     "concurrently": "^9.0.1",
     "sort-package-json": "^2.10.1",
     "ts-lit-plugin": "^2.0.2",
-    "vite": "^5.4.9"
+    "vite": "^5.4.10"
   },
   "publishConfig": {
     "access": "public"
