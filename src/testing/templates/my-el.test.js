@@ -1,5 +1,5 @@
 import {html, fixture, assert, expect, fixtureCleanup} from '@open-wc/testing';
-import '../define/<%= tagName %>.js';
+import '../src/define/<%= tagName %>.js';
 
 suite('<%= className %>', () => {
   /**

@@ -55,7 +55,7 @@ export const TsWcLitElementMixin = (subclass) =>
       // write & rename el registration template
       this.copyTemplate(
         `${__dirname}/templates/my-el.ts`,
-        this.destinationPath(`define/${tagName}.ts`)
+        this.destinationPath(`src/define/${tagName}.ts`)
       );
 
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);

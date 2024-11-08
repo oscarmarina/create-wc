@@ -55,7 +55,7 @@ export const WcLitElementMixin = (subclass) =>
       // write & rename el registration template
       this.copyTemplate(
         `${__dirname}/templates/my-el.js`,
-        this.destinationPath(`define/${tagName}.js`)
+        this.destinationPath(`src/define/${tagName}.js`)
       );
 
       await this.copyTemplates(`${__dirname}/templates/static/**/*`);

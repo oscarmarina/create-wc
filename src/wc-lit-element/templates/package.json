@@ -6,25 +6,23 @@
     "./package.json": {
       "default": "./package.json"
     },
-    "./src/<%= className %>.js": {
+    "./<%= className %>.js": {
       "default": "./src/<%= className %>.js"
     },
-    "./define/<%= tagName %>.js": {
-      "default": "./define/<%= tagName %>.js"
+    "./<%= tagName %>.js": {
+      "default": "./src/define/<%= tagName %>.js"
     },
     "./index.js": {
       "default": "./src/index.js"
     },
-    "./src/styles/<%= tagName %>-styles.css.js": {
+    "./<%= tagName %>-styles.css.js": {
       "default": "./src/styles/<%= tagName %>-styles.css.js"
     }
   },
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
-    "/define/",
     "/src/",
-    "index.js",
     "!/**/*.scss"
   ],
   "scripts": {

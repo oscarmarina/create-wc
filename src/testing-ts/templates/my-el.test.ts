@@ -1,6 +1,6 @@
 import {html, fixture, assert, expect, fixtureCleanup} from '@open-wc/testing';
 import {<%= className %>} from '../src/<%= className %>.js';
-import '../define/<%= tagName %>.js';
+import '../src/define/<%= tagName %>.js';
 
 suite('<%= className %>', () => {
   let el: <%= className %>;

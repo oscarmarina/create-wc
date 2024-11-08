@@ -28,18 +28,7 @@
     "useDefineForClassFields": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
-    "plugins": [
-      {
-        "name": "ts-lit-plugin",
-        "rules": {
-          "no-unknown-slot": "warning",
-          "no-unknown-attribute": "warning",
-          "no-unknown-property": "warning",
-          "no-unknown-event": "warning"
-        }
-      }
-    ],
     "types": ["mocha"]
   },
-  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

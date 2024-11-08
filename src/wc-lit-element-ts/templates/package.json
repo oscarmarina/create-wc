@@ -6,16 +6,16 @@
     "./package.json": {
       "default": "./package.json"
     },
-    "./src/<%= className %>.js": {
+    "./<%= className %>.js": {
       "default": "./dist/src/<%= className %>.js"
     },
-    "./define/<%= tagName %>.js": {
-      "default": "./dist/define/<%= tagName %>.js"
+    "./<%= tagName %>.js": {
+      "default": "./dist/src/define/<%= tagName %>.js"
     },
     "./index.js": {
       "default": "./dist/src/index.js"
     },
-    "./src/styles/<%= tagName %>-styles.css.js": {
+    "./<%= tagName %>-styles.css.js": {
       "default": "./dist/src/styles/<%= tagName %>-styles.css.js"
     }
   },
@@ -23,7 +23,6 @@
   "module": "dist/src/index.js",
   "files": [
     "/dist/",
-    "/dist/index.*",
     "!/dist/test/"
   ],
   "scripts": {
@@ -32,7 +31,7 @@
     "sass:watch": "sass-style-template -j ts"
   },
   "devDependencies": {
-    "tslib": "^2.8.0",
+    "tslib": "^2.8.1",
     "typescript": "^5.6.3"
   }
 }

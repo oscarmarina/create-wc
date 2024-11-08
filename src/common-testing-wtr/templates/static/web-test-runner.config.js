@@ -38,7 +38,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       functions: 80,
       lines: 80,
     },
-    include: ['**/src/**/*', '**/define/**/*'],
+    include: ['**/src/**/*'],
   },
 
   testFramework: {
