@@ -29,7 +29,7 @@
     "@blockquote/coverage-table-reporter": "^1.2.0",
     "@blockquote/rollup-plugin-externalize-source-dependencies": "^1.0.0",
     "@blockquote/rollup-plugin-total-bundlesize": "^2.1.2",
-    "@blockquote/sass-style-template": "^4.0.0",
+    "@blockquote/sass-style-template": "^4.0.3",
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@open-wc/testing": "^4.0.0",
     "@types/mocha": "^10.0.10",
@@ -37,8 +37,8 @@
     "@web/test-runner-playwright": "^0.11.0",
     "@web/rollup-plugin-html": "^2.3.0",
     "concurrently": "^9.1.0",
-    "sort-package-json": "^2.11.0",
-    "vite": "^5.4.11"
+    "sort-package-json": "^2.12.0",
+    "vite": "^6.0.1"
   },
   "publishConfig": {
     "access": "public"
