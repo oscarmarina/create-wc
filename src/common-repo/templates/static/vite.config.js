@@ -12,14 +12,13 @@ import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize
 export default defineConfig({
   plugins: [
     externalizeSourceDependencies(['/__web-dev-server__web-socket.js']),
-    pluginHtml(),
+    pluginHtml({input: 'demo/*.html'}),
     totalBundlesize(),
   ],
   build: {
     target: ['chrome71'],
     outDir: 'dev',
     rollupOptions: {
-      input: 'demo/*.html',
       output: {
         dir: 'dev/',
         format: 'es',

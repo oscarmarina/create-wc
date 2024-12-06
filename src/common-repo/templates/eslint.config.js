@@ -1,15 +1,15 @@
-// @ts-nocheck
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import importPlugin from 'eslint-plugin-import';
+import js from '@eslint/js';
+import {FlatCompat} from '@eslint/eslintrc';
 import {configs as wc} from 'eslint-plugin-wc';
 import {configs as lit} from 'eslint-plugin-lit';
+import * as importPlugin from 'eslint-plugin-import';
 import tseslint from 'typescript-eslint';
 import tsParser from '@typescript-eslint/parser';
 import html from '@html-eslint/eslint-plugin';
+import htmlParser from '@html-eslint/parser';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import js from '@eslint/js';
-import {FlatCompat} from '@eslint/eslintrc';
 import globals from 'globals';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,8 +24,8 @@ const compat = new FlatCompat({
 
 // eslint-plugin-import
 const importFilesConfig = [
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
+  importPlugin.flatConfigs?.recommended,
+  importPlugin.flatConfigs?.typescript,
 ].map((conf) => ({
   ...conf,
   files: [`**/*.${fileTypes}`],
@@ -111,16 +111,21 @@ const tsFilesRules = {
 const htmlFilesConfig = [html.configs['flat/recommended']].map((conf) => ({
   ...conf,
   files: ['**/*.html'],
+  plugins: {
+    '@html-eslint': html,
+  },
+  languageOptions: {
+    parser: htmlParser,
+  },
 }));
 
 const htmlFilesRules = {
   files: ['**/*.html'],
   rules: {
-    '@html-eslint/require-closing-tags': 'off',
-    '@html-eslint/attrs-newline': 'off',
-    '@html-eslint/element-newline': 'off',
     '@html-eslint/indent': ['error', 2],
+    '@html-eslint/require-closing-tags': 'off',
     '@html-eslint/no-extra-spacing-attrs': 'off',
+    '@html-eslint/attrs-newline': 'off',
   },
 };
 
@@ -144,8 +149,7 @@ export default [
       '**/*.config.*',
       '**/*.d.ts',
       '**/*.min.js',
-      '**/*-styles.js',
-      '**/*-styles.ts',
+      '**/*-styles.*',
       '**/*.workspace.*',
     ],
   },
