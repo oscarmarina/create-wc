@@ -16,19 +16,16 @@
     </style>
   </head>
   <body>
-    <div id="demo"></div>
-
     <script type="module">
-      import {html, render} from 'lit';
-      import '../src/define/<%= tagName %>.ts';
+      import {html, render} from './entry.js';
 
       const heading = 'World!';
       render(
         html`<<%= tagName %>
-          @counterchange="${(ev) => console.log('==>', ev.detail)}" .heading=${heading}
+          @counterchange="${(ev) => console.log('==>', ev.detail)}" .heading="${heading}"
           >some light-dom</<%= tagName %>
         >`,
-        document.querySelector('#demo')
+        document.body
       );
     </script>
   </body>
