@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "test": "tsc && OUTDIR=dist wtr",
-    "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"OUTDIR=dist wtr --watch\""
-  }
-}

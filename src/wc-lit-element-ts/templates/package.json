@@ -1,32 +1,33 @@
 {
   "exports": {
     ".": {
-      "default": "./dist/src/index.js"
+      "default": "./dist/index.js"
     },
     "./package.json": {
       "default": "./package.json"
     },
     "./<%= className %>.js": {
-      "default": "./dist/src/<%= className %>.js"
+      "default": "./dist/<%= className %>.js"
     },
     "./<%= tagName %>.js": {
-      "default": "./dist/src/define/<%= tagName %>.js"
+      "default": "./dist/define/<%= tagName %>.js"
     },
     "./index.js": {
-      "default": "./dist/src/index.js"
+      "default": "./dist/index.js"
     },
     "./<%= tagName %>-styles.css.js": {
-      "default": "./dist/src/styles/<%= tagName %>-styles.css.js"
+      "default": "./dist/styles/<%= tagName %>-styles.css.js"
     }
   },
-  "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "files": [
-    "/dist/",
-    "!/dist/test/"
+    "/src/",
+    "/dist/"
   ],
   "scripts": {
-    "build": "npm run build:tsc && npm run dev:vite",
+    "build": "npm run dev:vite && npm run build:lib && npm run build:tsc",
+    "build:lib": "vite build --config vite.lib.config.js",
     "build:tsc": "tsc",
     "sass:watch": "sass-style-template -j ts"
   },
