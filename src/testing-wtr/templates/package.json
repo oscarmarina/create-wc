@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "test": "wtr",
-    "test:watch": "wtr --watch"
-  }
-}

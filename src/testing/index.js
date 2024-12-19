@@ -1,13 +1,12 @@
 /* eslint-disable max-classes-per-file */
 import {fileURLToPath} from 'url';
 import {dirname} from 'path';
-import {TestingWebTestRunnerMixin} from '../testing-wtr/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export const TestingMixin = (subclass) =>
-  class extends TestingWebTestRunnerMixin(subclass) {
+  class extends subclass {
     async execute() {
       await super.execute();
       this.copyTemplateJsonInto(

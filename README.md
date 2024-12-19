@@ -1,26 +1,28 @@
-# Web Component with Lit - Scaffolding
+# Web Components with Lit - Scaffold
 
-This scaffold generator extends and customizes the core parts of **[@open-wc/create](https://open-wc.org/docs/development/generator/#extending)** providing a starting point for creating a web component with **[Lit](https://lit.dev/)**
+This scaffold generator extends and customizes **[@open-wc/create](https://open-wc.org/docs/development/generator/#extending)**, providing a starting point for creating web components with **[Lit](https://lit.dev/)**.
 
-## Development tools:
+## Development Tools
 
-- ### [Open Web Components](https://open-wc.org/) & [Modern Web](https://modern-web.dev/)
+### Scaffold
 
-  - Scaffold
-  - Lint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`es-lint`
-  - Format&nbsp;&nbsp;&nbsp;`prettier`
-  - Test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`web-test-runner`
+- Lint: `eslint`
+- Format: `prettier`
 
-- ### [Vite](https://vitejs.dev/)
+### Vite & Vitest
 
-  - [De Server](https://vitejs.dev/config/server-options.html)
-  - [Preview](https://vitejs.dev/config/preview-options.html)
-  - [Build](https://vitejs.dev/guide/build.html)
-    - TypeScript & [tsconfig](https://github.com/lit/lit/blob/main/packages/lit-starter-ts/tsconfig.json)
+- **Server**: [Vite Server](https://vitejs.dev/config/server-options.html)
+- **Preview**: [Vite Preview](https://vitejs.dev/config/preview-options.html)
+- **Build**: [Vite Build](https://vitejs.dev/guide/build.html)
 
-- ### [Sass](https://github.com/oscarmarina/sass-style-template)
+  - TypeScript: [`vite` transpile only](https://vite.dev/guide/features.html#typescript)
+  - TypeScript: [`tsc` emit declarations only](https://www.typescriptlang.org/tsconfig/#emitDeclarationOnly)
 
-  - SCSS watcher with [sass](https://www.npmjs.com/package/sass)
+- **Test**: [Vitest browser mode](https://vitest.dev/guide/browser/)
+
+- ### Sass
+
+  - SCSS [watcher](https://github.com/oscarmarina/sass-style-template) with [sass](https://www.npmjs.com/package/sass)
 
 - ### analyze
   - [Custom Elements Manifest](https://custom-elements-manifest.open-wc.org/blog/intro/)
@@ -31,7 +33,7 @@ This scaffold generator extends and customizes the core parts of **[@open-wc/cre
 ## Installation
 
 ```bash
-npm init @blockquote/wc@latest
+npm init @blockquote/wc
 ```
 
 ### Start
@@ -42,102 +44,47 @@ npm start
 
 <hr>
 
-### Linting and formatting
+### Linting and Formatting
 
-To scan the project for linting and formatting errors, run
+To scan the project for linting and formatting errors, run:
 
 ```bash
 npm run lint
 ```
 
-To automatically fix linting and formatting errors, run
+To automatically fix them, run:
 
 ```bash
 npm run format
 ```
 
-### Testing with Web Test Runner
+### Testing
 
-- playwright
-- coverage
-- TDD option
-
-<br>
-
-### web-test-runner.config
-
-```js
-import {playwrightLauncher} from '@web/test-runner-playwright';
-import {defaultReporter, summaryReporter} from '@web/test-runner';
-import {coverageTableReporter} from '@blockquote/coverage-table-reporter';
-
-const filteredLogs = ['in dev mode'];
-const outDir = process.env.OUTDIR || '.';
-
-export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
-  files: [`${outDir}/test/**/*.test.js`],
-  nodeResolve: true,
-  browsers: [playwrightLauncher({product: 'chromium'}), playwrightLauncher({product: 'webkit'})],
-  concurrentBrowsers: 2,
-  concurrency: 1,
-  reporters: [summaryReporter({}), defaultReporter(), coverageTableReporter()],
-  preserveSymlinks: true,
-  coverage: true,
-  coverageConfig: {
-    reportDir: `${outDir}/test/coverage`,
-    reporters: ['lcov', 'lcovonly', 'json'],
-    threshold: {
-      statements: 80,
-      branches: 80,
-      functions: 80,
-      lines: 80,
-    },
-    include: ['**/src/**/*', '**/define/**/*'],
-  },
-  testFramework: {
-    config: {
-      ui: 'tdd',
-      timeout: 4000,
-    },
-  },
-  filterBrowserLogs(log) {
-    for (const arg of log.args) {
-      if (typeof arg === 'string' && filteredLogs.some((l) => arg.includes(l))) {
-        return false;
-      }
-    }
-    return true;
-  },
-});
-```
-
-To execute a single test run:
+Run tests with:
 
 ```bash
 npm run test
 ```
 
-To run the tests in interactive watch mode run:
-
-```bash
-npm run test:watch
-```
-
 <hr>
 
-### dev server
+### Development Server
 
-- Vite supports importing .ts files out of the box ([4848](https://github.com/vitejs/vite/issues/4848), [3040](https://github.com/vitejs/vite/issues/3040#issuecomment-940697809))
+Start the development server:
 
 ```bash
-npm run vite
+npm run start
 ```
 
-### For hosting a static demo purposes only - [Do not bundle](https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm/#do-not-bundle)
+### Hosting a Static Demo (Do Not Bundle)
+
+For hosting a static demo without bundling:
 
 ```bash
 npm run dev:vite
 ```
+
+Preview demo:
 
 ```bash
 npm run preview:vite
@@ -153,9 +100,11 @@ npm run build
 
 <hr>
 
-### sass
+### Sass
 
-#### scss watcher
+#### SCSS Watcher
+
+Start the SCSS watcher:
 
 ```bash
 npm run sass:watch
@@ -163,9 +112,11 @@ npm run sass:watch
 
 <hr>
 
-### Custom Element Manifest
+### Custom Elements Manifest
 
-#### Generating README from custom-elements.json
+#### Generating README from `custom-elements.json`
+
+Generate documentation:
 
 ```bash
 npm run analyze
@@ -175,12 +126,16 @@ npm run analyze
 
 Husky is pre-installed.
 
-After `git init`; run `npm run prepare` to set up Husky and its Git hooks.
+After initializing Git with `git init`, run:
+
+```bash
+npm run prepare
+```
+
+to set up Husky and its Git hooks.
 
 <hr>
 
 **Example:**
 
-> - https://github.com/oscarmarina/blockquote-web-components
-
-<hr>
+- [lit-vitest-testing-comparison](https://github.com/oscarmarina/lit-vitest-testing-comparison)

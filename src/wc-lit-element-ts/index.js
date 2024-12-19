@@ -79,6 +79,10 @@ export const TsWcLitElementPackageMixin = (subclass) =>
         `${__dirname}/templates/tsconfig.json`,
         this.destinationPath('tsconfig.json')
       );
+      this.copyTemplate(
+        `${__dirname}/templates/vite.lib.config.js`,
+        this.destinationPath('vite.lib.config.js')
+      );
     }
 
     async end() {
