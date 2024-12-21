@@ -20,7 +20,7 @@ const copyConfig = {
 export default defineConfig({
   test: {
     onConsoleLog(log, type) {
-      if (log.includes('in dev mode')) {
+      if (type === 'stderr' && log.includes('in dev mode')) {
         return false;
       }
     },
@@ -30,17 +30,21 @@ export default defineConfig({
       headless: false,
       name: 'chromium',
       provider: 'playwright',
-      screnshotfailures: false,
+      screenshotFailures: false,
       viewport: {width: 1920, height: 1080},
-      providerOptions: {
-        launch: {
-          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+      instances: [
+        {
+          browser: 'chromium',
+          launch: {
+            devtools: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+          },
         },
-      },
+      ],
     },
     coverage: {
       provider: 'v8',
-      reportsDirectory: './test/coverage/',
+      reportsDirectory: 'test/coverage/',
       reporter: ['lcov', 'json', 'text-summary', 'html'],
       enabled: true,
       thresholds: {
