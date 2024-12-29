@@ -20,7 +20,8 @@
     "sort:package": "npx sort-package-json",
     "postinstall": "npm run sort:package",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest --run --browser.headless",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "lit": "^3.2.1"
@@ -35,18 +36,17 @@
     "@open-wc/testing": "^4.0.0",
     "playwright": "^1.49.1",
     "@types/mocha": "^10.0.10",
-    "@rollup/plugin-multi-entry": "^6.0.1",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-node-externals": "^8.0.0",
     "tinyglobby": "^0.2.10",
-    "concurrently": "^9.1.0",
+    "concurrently": "^9.1.1",
     "sort-package-json": "^2.12.0",
     "@vitest/browser": "^3.0.0-beta.3",
     "@vitest/coverage-istanbul": "^3.0.0-beta.3",
     "@vitest/coverage-v8": "^3.0.0-beta.3",
     "@vitest/ui": "^3.0.0-beta.3",
-     "vitest": "^3.0.0-beta.3",
-    "vite": "^6.0.5"
+    "vitest": "^3.0.0-beta.3",
+    "vite": "^6.0.6"
   },
   "publishConfig": {
     "access": "public"
