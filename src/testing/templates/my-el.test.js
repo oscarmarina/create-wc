@@ -74,13 +74,13 @@ suite('<%= className %>', () => {
   });
 
   suite('Override ', () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
       el = await fixture(html`<<%= tagName %> heading="attribute heading"></<%= tagName %>>`);
       elLocator = page.elementLocator(el);
-    });
 
-    afterEach(() => {
-      fixtureCleanup();
+      return () => {
+        fixtureCleanup();
+      };
     });
 
     test('can override the heading via attribute', () => {
