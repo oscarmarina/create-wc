@@ -2,6 +2,14 @@
 
 This scaffold generator extends and customizes **[@open-wc/create](https://open-wc.org/docs/development/generator/#extending)**, providing a starting point for creating web components with **[Lit](https://lit.dev/)**.
 
+**Example:**
+
+[![Open in GitHub](https://img.shields.io/badge/Open_in_GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/oscarmarina/lit-vitest-testing-comparison)
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/oscarmarina/lit-vitest-testing-comparison)
+
+<hr>
+
 ## Development Tools
 
 ### Scaffold
@@ -18,7 +26,7 @@ This scaffold generator extends and customizes **[@open-wc/create](https://open-
   - TypeScript: [`vite` transpile only](https://vite.dev/guide/features.html#typescript)
   - TypeScript: [`tsc` emit declarations only](https://www.typescriptlang.org/tsconfig/#emitDeclarationOnly)
 
-- **Test**: [Vitest browser mode](https://vitest.dev/guide/browser/)
+- **Test**: [Vitest browser mode](https://vitest.dev/guide/browser/) and [chai-a11y-axe](https://www.npmjs.com/package/chai-a11y-axe)
 
 - ### Sass
 
@@ -63,7 +71,15 @@ npm run format
 Run tests with:
 
 ```bash
+// vitest --run --browser.headless
+
 npm run test
+```
+
+```bash
+// vitest
+
+npm run test:watch
 ```
 
 <hr>
@@ -136,6 +152,8 @@ to set up Husky and its Git hooks.
 
 <hr>
 
-**Example:**
+**Plugins:**
 
-- [lit-vitest-testing-comparison](https://github.com/oscarmarina/lit-vitest-testing-comparison)
+- [rollup-plugin-externalize-source-dependencies](https://github.com/oscarmarina/rollup-plugin-externalize-source-dependencies)
+
+- [vite-plugin-prevent-rewrite-imports-type-module](https://github.com/oscarmarina/vite-plugin-prevent-rewrite-imports-type-module/tree/main)
