@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite';
 import copy from 'rollup-plugin-copy';
-import multi from '@rollup/plugin-multi-entry';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize-source-dependencies';
 
@@ -14,13 +13,24 @@ const copyConfig = {
   hook: 'writeBundle',
 };
 
-const outDir = process.env.OUTDIR || '.';
+const entriesDir = 'demo';
+const entriesGlob = [`${entriesDir}/entry.js`];
+
+// https://github.com/vitejs/vite/discussions/1736#discussioncomment-5126923
+const entries = Object.fromEntries(
+  entriesGlob.map((file) => {
+    const [key] = file.match(new RegExp(`(?<=${entriesDir}\/).*`)) || [];
+    return [key?.replace(/\.[^.]*$/, ''), file];
+  })
+);
+
+// https://vitejs.dev/config/
+// https://vite-rollup-plugins.patak.dev/
 
 export default defineConfig({
   plugins: [
     externalizeSourceDependencies(['/__web-dev-server__web-socket.js']),
     copy(copyConfig),
-    multi({entryFileName: 'entry.js'}),
     totalBundlesize(),
   ],
   optimizeDeps: {
@@ -31,9 +41,10 @@ export default defineConfig({
     outDir: 'dev',
     rollupOptions: {
       preserveEntrySignatures: 'exports-only',
-      input: ['demo/*.js'],
+      input: entries,
       output: {
         dir: 'dev/',
+        entryFileNames: '[name].js',
         format: 'es',
       },
     },
