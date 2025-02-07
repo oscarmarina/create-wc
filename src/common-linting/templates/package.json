@@ -31,6 +31,12 @@
         "options": {
           "singleQuote": false
         }
+      },
+      {
+        "files": "*.json",
+        "options": {
+          "parser": "json-stringify"
+        }
       }
     ]
   },
@@ -44,21 +50,21 @@
     }
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.32.0",
-    "@html-eslint/parser": "^0.32.0",
-    "eslint": "^9.18.0",
+    "@html-eslint/eslint-plugin": "^0.34.0",
+    "@html-eslint/parser": "^0.34.0",
+    "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-lit": "^1.15.0",
     "eslint-plugin-lit-a11y": "^4.1.4",
     "eslint-plugin-wc": "^2.2.0",
-    "@typescript-eslint/parser": "^8.20.0",
-    "typescript-eslint": "^8.20.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "typescript-eslint": "^8.23.0",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.1",
+    "lint-staged": "^15.4.3",
     "prettier": "^3.4.2",
-    "stylelint": "^16.13.2",
+    "stylelint": "^16.14.1",
     "stylelint-config-standard-scss": "^14.0.0"
   }
 }

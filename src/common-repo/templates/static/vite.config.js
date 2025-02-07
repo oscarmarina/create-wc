@@ -1,25 +1,27 @@
 import {defineConfig} from 'vite';
+import {globSync} from 'tinyglobby';
 import copy from 'rollup-plugin-copy';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize-source-dependencies';
 
+const OUT_DIR = 'dev';
+const ENTRIES_DIR = 'demo';
+const ENTRIES_GLOB = [`${ENTRIES_DIR}/**/*.js`];
+
 const copyConfig = {
   targets: [
     {
-      src: 'demo/*.html',
-      dest: 'dev/',
+      src: [`${ENTRIES_DIR}/**/*.*`, `!${ENTRIES_GLOB}`],
+      dest: OUT_DIR,
     },
   ],
   hook: 'writeBundle',
 };
 
-const entriesDir = 'demo';
-const entriesGlob = [`${entriesDir}/entry.js`];
-
 // https://github.com/vitejs/vite/discussions/1736#discussioncomment-5126923
 const entries = Object.fromEntries(
-  entriesGlob.map((file) => {
-    const [key] = file.match(new RegExp(`(?<=${entriesDir}\/).*`)) || [];
+  globSync(ENTRIES_GLOB).map((file) => {
+    const [key] = file.match(new RegExp(`(?<=${ENTRIES_DIR}\/).*`)) || [];
     return [key?.replace(/\.[^.]*$/, ''), file];
   })
 );
@@ -53,7 +55,7 @@ export default defineConfig({
       ],
     },
     coverage: {
-      provider: 'v8',
+      provider: 'istanbul',
       reportsDirectory: 'test/coverage/',
       reporter: ['lcov', 'json', 'text-summary', 'html'],
       enabled: true,
@@ -77,12 +79,12 @@ export default defineConfig({
   },
   build: {
     target: ['chrome71'],
-    outDir: 'dev',
+    outDir: OUT_DIR,
     rollupOptions: {
       preserveEntrySignatures: 'exports-only',
       input: entries,
       output: {
-        dir: 'dev/',
+        dir: OUT_DIR,
         entryFileNames: '[name].js',
         format: 'es',
       },
