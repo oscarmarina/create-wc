@@ -34,6 +34,4 @@
 **/*.d.ts
 **/package-lock.json
 **/*.min.js
-**/*-styles*.js
-**/*-styles*.ts
 **/CHANGELOG.md

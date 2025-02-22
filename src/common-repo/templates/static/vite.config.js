@@ -40,7 +40,6 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: false,
-      name: 'chromium',
       provider: 'playwright',
       screenshotFailures: false,
       viewport: {width: 1920, height: 1080},
@@ -51,6 +50,12 @@ export default defineConfig({
             devtools: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
           },
+          context: {},
+        },
+        {
+          browser: 'webkit',
+          launch: {},
+          context: {},
         },
       ],
     },

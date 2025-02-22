@@ -2,21 +2,20 @@
   "scripts": {
     "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
     "format:eslint": "eslint . --fix",
-    "format:prettier": "prettier \"**/*.{js,ts,json,html}\" --write --ignore-path .prettierignore",
-    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .prettierignore",
-    "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .prettierignore",
-    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .prettierignore"
+    "format:prettier": "prettier \"**/*.{js,ts,css,scss,html,json}\" --write --ignore-path .prettierignore",
+    "format:stylelint": "stylelint \"{demo,src}/**/*.{js,ts,css,scss,html}\" --fix --ignore-path .prettierignore"
   },
   "lint-staged": {
     "**/*.{js,ts,html}": [
-      "npm run format:eslint"
+      "npm run format:prettier",
+      "npm run format:eslint",
+      "npm run format:stylelint"
     ],
-    "**/*.{js,ts,json,html}": [
+    "**/*.json": [
       "npm run format:prettier"
     ],
     "**/*.{scss,css}": [
+      "npm run format:prettier",
       "npm run format:stylelint"
     ]
   },
@@ -42,28 +41,44 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
+    "allowEmptyInput": true,
     "rules": {
       "custom-property-pattern": null,
       "no-duplicate-selectors": null,
       "color-function-notation": null,
       "alpha-value-notation": null
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.html"
+        ],
+        "customSyntax": "postcss-html"
+      },
+      {
+        "files": [
+          "**/*.{ts,js}"
+        ],
+        "customSyntax": "postcss-lit"
+      }
+    ]
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.34.0",
-    "@html-eslint/parser": "^0.34.0",
-    "eslint": "^9.19.0",
+    "@html-eslint/eslint-plugin": "^0.35.0",
+    "@html-eslint/parser": "^0.35.0",
+    "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-html": "^8.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-lit": "^1.15.0",
     "eslint-plugin-lit-a11y": "^4.1.4",
-    "eslint-plugin-wc": "^2.2.0",
-    "@typescript-eslint/parser": "^8.23.0",
-    "typescript-eslint": "^8.23.0",
-    "globals": "^15.14.0",
+    "eslint-plugin-wc": "^2.2.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "typescript-eslint": "^8.24.1",
+    "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.2",
     "stylelint": "^16.14.1",
     "stylelint-config-standard-scss": "^14.0.0"
   }
