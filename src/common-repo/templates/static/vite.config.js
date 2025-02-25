@@ -21,7 +21,7 @@ const copyConfig = {
 // https://github.com/vitejs/vite/discussions/1736#discussioncomment-5126923
 const entries = Object.fromEntries(
   globSync(ENTRIES_GLOB).map((file) => {
-    const [key] = file.match(new RegExp(`(?<=${ENTRIES_DIR}\/).*`)) || [];
+    const [key] = file.match(new RegExp(`(?<=${ENTRIES_DIR}/).*`)) || [];
     return [key?.replace(/\.[^.]*$/, ''), file];
   })
 );
