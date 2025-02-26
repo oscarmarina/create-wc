@@ -3,7 +3,7 @@ import {nodeExternals} from 'rollup-plugin-node-externals';
 import {globSync} from 'tinyglobby';
 
 const ENTRIES_DIR = 'src';
-const ENTRIES_GLOB = [`${ENTRIES_DIR}/**/*.js`];
+const ENTRIES_GLOB = [`${ENTRIES_DIR}/**/*.ts`];
 
 // https://github.com/vitejs/vite/discussions/1736#discussioncomment-5126923
 const entries = Object.fromEntries(
