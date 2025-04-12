@@ -1,4 +1,3 @@
-/* eslint-disable no-console, import/no-cycle */
 import _Generator from '@open-wc/create/dist/Generator.js';
 
 /**
