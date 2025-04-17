@@ -1,5 +1,6 @@
 import {beforeAll, afterAll, beforeEach, afterEach, suite, assert, expect, vi, test} from 'vitest';
-import {page, userEvent, type Locator} from '@vitest/browser/context';
+import {type LocatorSelectors} from '@vitest/browser/context';
+import {getElementLocatorSelectors} from '@vitest/browser/utils';
 import {html} from 'lit';
 import {getDiffableHTML} from '@open-wc/semantic-dom-diff';
 import {assert as a11y, fixture, fixtureCleanup} from '@open-wc/testing';
@@ -9,22 +10,22 @@ import '../src/define/<%= tagName %>.js';
 suite('<%= className %>', () => {
   let el: <%= className %>;
   let elShadowRoot: string;
-  let elLocator: Locator;
+  let elLocator: LocatorSelectors;
 
   suite('Semantic Dom and a11y', () => {
     beforeAll(async () => {
       el = await fixture(html`<<%= tagName %>>light-dom</<%= tagName %>>`);
       elShadowRoot = el?.shadowRoot!.innerHTML;
-      elLocator = page.elementLocator(el);
+      elLocator = getElementLocatorSelectors(el);
     });
 
     afterAll(() => {
       fixtureCleanup();
     });
 
-    test('has a default heading "Hey there" and counter 5', async () => {
-      const button = await elLocator.getByText('Counter: 5').query();
-      const heading = await elLocator.getByText('Hey there').query();
+    test('has a default heading "Hey there" and counter 5', () => {
+      const button = elLocator.getByText('Counter: 5').query();
+      const heading = elLocator.getByText('Hey there').query();
       assert.isOk(button);
       assert.isOk(heading);
     });
@@ -45,7 +46,7 @@ suite('<%= className %>', () => {
   suite('Events ', () => {
     beforeEach(async () => {
       el = await fixture(html`<<%= tagName %>></<%= tagName %>>`);
-      elLocator = page.elementLocator(el);
+      elLocator = getElementLocatorSelectors(el);
     });
 
     afterEach(() => {
@@ -63,8 +64,7 @@ suite('<%= className %>', () => {
     test('counterchange event is dispatched', async () => {
       const spyEvent = vi.spyOn(el, 'dispatchEvent');
       const button = elLocator.getByText('Counter: 5');
-      const elButton = button.query()!;
-      await userEvent.click(elButton);
+      await button.click();
       await el.updateComplete;
       const calledWithCounterChange = spyEvent.mock.lastCall?.[0].type === 'counterchange';
       assert.isTrue(calledWithCounterChange);
@@ -74,7 +74,7 @@ suite('<%= className %>', () => {
   suite('Override ', () => {
     beforeAll(async () => {
       el = await fixture(html`<<%= tagName %> heading="attribute heading"></<%= tagName %>>`);
-      elLocator = page.elementLocator(el);
+      elLocator = getElementLocatorSelectors(el);
 
       return () => {
         fixtureCleanup();
