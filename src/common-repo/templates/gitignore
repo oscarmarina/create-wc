@@ -8,15 +8,20 @@
 
 ## npm/yarn
 **/node_modules
-**/npm-debug.log
 **/*-debug.log
 **/yarn-error.log
+**/.pnp
+**/.pnp.*
 
 ## testing
 **/coverage
 **/reports
 **/*screenshots*
 **/*snapshots*
+**/test-results/
+**/playwright-report/
+**/blob-report/
+**/playwright/.cache/
 
 ## build
 **/_site
@@ -24,9 +29,17 @@
 **/dev
 **/build
 **/.tmp
-**/.env
 **/.wireit
 **/*.tgz
 **/*.tsbuildinfo
 **/storybook-static
+
+# local env files
+**/.auth
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
 ## end gitignore
