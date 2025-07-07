@@ -201,7 +201,11 @@ export default [
         2,
         {
           SwitchCase: 1,
-          ignoredNodes: ['PropertyDefinition', 'TemplateLiteral *'],
+          ignoredNodes: [
+            'PropertyDefinition',
+            'TemplateLiteral *',
+            'ArrowFunctionExpression ClassExpression',
+          ],
         },
       ],
       'no-empty-function': 'error',
