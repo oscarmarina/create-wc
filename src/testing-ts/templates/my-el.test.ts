@@ -1,11 +1,25 @@
-import {beforeAll, afterAll, beforeEach, afterEach, suite, assert, expect, vi, test} from 'vitest';
+import {
+  suite,
+  test,
+  assert,
+  expect,
+  beforeAll,
+  afterAll,
+  beforeEach,
+  afterEach,
+  vi,
+  chai,
+} from 'vitest';
 import {type LocatorSelectors} from '@vitest/browser/context';
 import {getElementLocatorSelectors} from '@vitest/browser/utils';
 import {html} from 'lit';
-import {getDiffableHTML} from '@open-wc/semantic-dom-diff';
-import {assert as a11y, fixture, fixtureCleanup} from '@open-wc/testing';
+import {chaiA11yAxe} from 'chai-a11y-axe';
+import {fixture, fixtureCleanup} from '@open-wc/testing-helpers';
+import {getDiffableHTML} from '@open-wc/semantic-dom-diff/get-diffable-html.js';
 import {<%= className %>} from '../src/<%= className %>.js';
 import '../src/define/<%= tagName %>.js';
+
+chai.use(chaiA11yAxe);
 
 suite('<%= className %>', () => {
   let el: <%= className %>;
@@ -39,7 +53,7 @@ suite('<%= className %>', () => {
     });
 
     test('a11y', async () => {
-      await a11y.isAccessible(el);
+      await assert.isAccessible(el);
     });
   });
 

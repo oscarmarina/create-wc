@@ -2,7 +2,6 @@ import {defineConfig} from 'vite';
 import {globSync} from 'tinyglobby';
 import copy from 'rollup-plugin-copy';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
-import externalizeSourceDependencies from '@blockquote/rollup-plugin-externalize-source-dependencies';
 
 const OUT_DIR = 'dev';
 const ENTRIES_DIR = 'demo';
@@ -74,11 +73,7 @@ export default defineConfig({
       exclude: ['**/src/**/index.*', '**/src/styles/'],
     },
   },
-  plugins: [
-    externalizeSourceDependencies(['/__web-dev-server__web-socket.js']),
-    copy(copyConfig),
-    totalBundlesize(),
-  ],
+  plugins: [copy(copyConfig), totalBundlesize()],
   optimizeDeps: {
     exclude: ['lit', 'lit-html'],
   },
