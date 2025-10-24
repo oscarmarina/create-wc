@@ -1,4 +1,5 @@
 import {defineConfig} from 'vite';
+import {playwright} from '@vitest/browser-playwright';
 import {globSync} from 'tinyglobby';
 import copy from 'rollup-plugin-copy';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
@@ -39,22 +40,19 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: false,
-      provider: 'playwright',
+      provider: playwright({
+        launchOptions: {
+          devtools: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+        },
+      }),
       screenshotFailures: false,
-      viewport: {width: 1920, height: 1080},
       instances: [
         {
           browser: 'chromium',
-          launch: {
-            devtools: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
-          },
-          context: {},
         },
         {
           browser: 'webkit',
-          launch: {},
-          context: {},
         },
       ],
     },
