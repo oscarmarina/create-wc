@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import {fileURLToPath} from 'url';
 import {dirname} from 'path';
 import {TestingWebTestRunnerMixin} from '../testing-wtr/index.js';

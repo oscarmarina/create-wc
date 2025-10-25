@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import {fileURLToPath} from 'url';
 import {join, dirname} from 'path';
 import {processTemplate, readFileFromPath} from '@open-wc/create/dist/core.js';
@@ -28,7 +27,6 @@ function featureReadme(acc, feature, i, a) {
 
 const safeFeatureReadme = safeReduce(featureReadme, '');
 
-/* eslint-disable no-console */
 export const WcLitElementMixin = (subclass) =>
   class extends subclass {
     async execute() {

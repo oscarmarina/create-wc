@@ -44,21 +44,23 @@
     }
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.32.0",
-    "@html-eslint/parser": "^0.32.0",
-    "eslint": "^9.18.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-lit": "^1.15.0",
-    "eslint-plugin-lit-a11y": "^4.1.4",
-    "eslint-plugin-wc": "^2.2.0",
-    "@typescript-eslint/parser": "^8.20.0",
-    "typescript-eslint": "^8.20.0",
-    "globals": "^15.14.0",
+    "@eslint/js": "^9.38.0",
+    "@html-eslint/eslint-plugin": "^0.47.0",
+    "@html-eslint/parser": "^0.47.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-html": "^8.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-lit": "^2.1.1",
+    "eslint-plugin-lit-a11y": "^5.1.1",
+    "eslint-plugin-wc": "^3.0.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "typescript-eslint": "^8.46.2",
+    "globals": "^16.4.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.1",
-    "prettier": "^3.4.2",
-    "stylelint": "^16.13.2",
-    "stylelint-config-standard-scss": "^14.0.0"
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard-scss": "^16.0.0"
   }
 }

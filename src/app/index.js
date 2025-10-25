@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import prompts from 'prompts';
 // import commandLineArgs from 'command-line-args';
 import {executeMixinGenerator} from '@open-wc/create/dist/core.js';
@@ -8,7 +7,6 @@ import {gatherMixins} from './gatherMixins.js';
 import Generator from '../Generator.js';
 
 export const AppMixin = (subclass) =>
-  // eslint-disable-next-line no-shadow
   class AppMixin extends subclass {
     constructor() {
       super();
