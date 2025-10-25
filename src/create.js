@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-console */
-
 import semver from 'semver';
 import chalk from 'chalk';
 import {executeMixinGenerator} from '@open-wc/create/dist/core.js';
