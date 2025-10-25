@@ -1,28 +1,28 @@
-import eslintConfigPrettier from 'eslint-config-prettier';
-import path from 'node:path';
 import js from '@eslint/js';
-import {fileURLToPath} from 'node:url';
-import {FlatCompat} from '@eslint/eslintrc';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+import openwcEslintConfig from '@open-wc/eslint-config';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import globals from 'globals';
 
 export default [
   {
     ignores: ['**/src/*/templates/**/*.js'],
   },
-  ...compat.extends('@open-wc'),
+  js.configs.recommended,
+  ...openwcEslintConfig,
   eslintConfigPrettier,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
   {
     files: ['**/src/**/*.html'],
     rules: {
-      'import/no-unresolved': 'off',
+      'import-x/no-unresolved': 'off',
     },
   },
   {
@@ -32,7 +32,6 @@ export default [
       'no-unused-expressions': 'off',
       'class-methods-use-this': 'off',
       'max-classes-per-file': 'off',
-      'import/no-extraneous-dependencies': 'off', // we moved all devDependencies to root
     },
   },
 ];
