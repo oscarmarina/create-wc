@@ -40,16 +40,17 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: false,
-      provider: playwright({
-        launchOptions: {
-          devtools: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
-        },
-      }),
+      provider: playwright(),
       screenshotFailures: false,
       instances: [
         {
           browser: 'chromium',
+          provider: playwright({
+            launchOptions: {
+              devtools: true,
+              args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+            },
+          }),
         },
         {
           browser: 'webkit',
