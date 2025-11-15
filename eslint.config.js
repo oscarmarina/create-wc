@@ -30,7 +30,6 @@ export default [
     rules: {
       'no-console': 'off',
       'no-unused-expressions': 'off',
-      'class-methods-use-this': 'off',
       'max-classes-per-file': 'off',
     },
   },
