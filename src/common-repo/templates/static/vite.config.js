@@ -39,7 +39,7 @@ export default defineConfig({
     include: ['test/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
     browser: {
       enabled: true,
-      headless: false,
+      headless: true,
       provider: playwright(),
       screenshotFailures: false,
       instances: [
