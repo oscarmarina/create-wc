@@ -3,8 +3,7 @@ import {configs as wc} from 'eslint-plugin-wc';
 import {configs as lit} from 'eslint-plugin-lit';
 import {default as litA11y} from 'eslint-plugin-lit-a11y';
 import {flatConfigs as importPlugin} from 'eslint-plugin-import';
-import tseslint from 'typescript-eslint';
-import tsParser from '@typescript-eslint/parser';
+import {configs as tseslint, parser as tsParser} from 'typescript-eslint';
 import htmlEslint from '@html-eslint/eslint-plugin';
 import htmlEslintParser from '@html-eslint/parser';
 import eslintPluginHtml from 'eslint-plugin-html';
@@ -13,11 +12,35 @@ import globals from 'globals';
 
 const fileTypes = '{js,ts,mjs}';
 
+//
+// ──────────────────────────────────────────────────────────────
+// Base config
+// ──────────────────────────────────────────────────────────────
+//
+const baseConfig = [
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+      },
+    },
+  },
+];
+
+//
+// ──────────────────────────────────────────────────────────────
 // eslint-plugin-import
+// ──────────────────────────────────────────────────────────────
+//
 const importFilesConfig = [importPlugin.recommended, importPlugin.typescript].map((conf) => ({
   ...conf,
   files: [`**/*.${fileTypes}`],
   languageOptions: {
+    ...conf.languageOptions,
     parser: tsParser,
   },
 }));
@@ -25,13 +48,7 @@ const importFilesConfig = [importPlugin.recommended, importPlugin.typescript].ma
 const importFilesRules = {
   files: [`**/*.${fileTypes}`],
   rules: {
-    'import/extensions': [
-      'error',
-      'always',
-      {
-        ignorePackages: true,
-      },
-    ],
+    'import/extensions': ['error', 'always', {ignorePackages: true}],
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -47,7 +64,12 @@ const importFilesRules = {
   },
 };
 
+//
+// ──────────────────────────────────────────────────────────────
 // eslint-plugin-lit-a11y
+// ──────────────────────────────────────────────────────────────
+//
+// @ts-ignore
 const litA11yFilesConfig = [litA11y.configs.recommended].map((conf) => ({
   ...conf,
   files: [`**/*.${fileTypes}`],
@@ -62,7 +84,11 @@ const litA11yFilesRules = {
   },
 };
 
+//
+// ──────────────────────────────────────────────────────────────
 // eslint-plugin-wc
+// ──────────────────────────────────────────────────────────────
+//
 const wcFilesConfig = [wc['flat/recommended']].map((conf) => ({
   ...conf,
   files: [`**/*.${fileTypes}`],
@@ -75,7 +101,11 @@ const wcFilesRules = {
   },
 };
 
+//
+// ──────────────────────────────────────────────────────────────
 // eslint-plugin-lit
+// ──────────────────────────────────────────────────────────────
+//
 const litFilesConfig = [lit['flat/recommended']].map((conf) => ({
   ...conf,
   files: [`**/*.${fileTypes}`],
@@ -92,32 +122,63 @@ const litFilesRules = {
   },
 };
 
-// @html-eslint/typescript-eslint
-const tsFilesConfig = [...tseslint.configs.strict, ...tseslint.configs.stylistic].map((conf) => ({
+//
+// ──────────────────────────────────────────────────────────────
+// typescript-eslint
+// ──────────────────────────────────────────────────────────────
+//
+const tsFilesConfig = [...tseslint.strict, ...tseslint.stylistic].map((conf) => ({
   ...conf,
   files: ['**/*.ts'],
+  // @ts-ignore
+  ...(conf.languageOptions && {
+    languageOptions: {
+      // @ts-ignore
+      ...conf.languageOptions,
+      parserOptions: {
+        // @ts-ignore
+        ...conf.languageOptions.parserOptions,
+        projectService: {
+          allowDefaultProject: [
+            `test/*.${fileTypes}`,
+            `*.config.${fileTypes}`,
+            `*.conf.${fileTypes}`,
+          ],
+        },
+      },
+    },
+  }),
 }));
 
 const tsFilesRules = {
   files: ['**/*.ts'],
   rules: {
+    '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/class-literal-property-style': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
   },
 };
 
-// @html-eslint/eslint-plugin
+//
+// ──────────────────────────────────────────────────────────────
+// HTML
+// ──────────────────────────────────────────────────────────────
+//
+// @ts-ignore
 const htmlFilesConfig = [htmlEslint.configs['flat/recommended']].map((conf) => ({
   ...conf,
   files: ['**/*.html'],
   plugins: {
+    ...conf.plugins,
     '@html-eslint': htmlEslint,
   },
   languageOptions: {
+    ...conf.languageOptions,
     parser: htmlEslintParser,
   },
 }));
@@ -132,13 +193,16 @@ const htmlFilesRules = {
   },
 };
 
-// @eslint-plugin-html
 const eslintPluginHtmlConfig = {
   files: ['**/*.html'],
   plugins: {eslintPluginHtml},
 };
 
-// eslint-config
+//
+// ──────────────────────────────────────────────────────────────
+// Export
+// ──────────────────────────────────────────────────────────────
+//
 export default [
   {
     ignores: [
@@ -161,31 +225,31 @@ export default [
       '**/*.workspace.*',
     ],
   },
-  js.configs.recommended,
+
+  ...baseConfig,
+
   ...importFilesConfig,
   importFilesRules,
+
   ...litA11yFilesConfig,
   litA11yFilesRules,
+
   ...wcFilesConfig,
   wcFilesRules,
+
   ...litFilesConfig,
   litFilesRules,
+
   ...tsFilesConfig,
   tsFilesRules,
+
   ...htmlFilesConfig,
   htmlFilesRules,
   eslintPluginHtmlConfig,
-  eslintConfigPrettier,
-  {
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        ...globals.mocha,
-      },
-    },
 
+  eslintConfigPrettier,
+
+  {
     rules: {
       'no-unused-expressions': [
         'error',
@@ -197,11 +261,11 @@ export default [
       'no-empty-function': 'error',
     },
   },
+
   {
     files: [`**/test/**/*.${fileTypes}`],
     rules: {
       'no-unused-expressions': 'off',
-      '@typescript-eslint/no-unused-expressions': 'off',
     },
   },
 ];

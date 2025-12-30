@@ -24,7 +24,7 @@
     "test:watch": "vitest --browser.headless=false"
   },
   "dependencies": {
-    "lit": "^3.3.1"
+    "lit": "^3.3.2"
   },
   "devDependencies": {
     "@blockquote/cem-to-markdown-readme": "^1.0.0",
@@ -42,13 +42,13 @@
     "tinyglobby": "^0.2.15",
     "chai-a11y-axe": "^1.5.0",
     "concurrently": "^9.2.1",
-    "sort-package-json": "^3.5.1",
-    "@vitest/browser-playwright": "^4.0.15",
-    "@vitest/coverage-istanbul": "^4.0.15",
-    "@vitest/coverage-v8": "^4.0.15",
-    "@vitest/ui": "^4.0.15",
-    "vitest": "^4.0.15",
-    "vite": "^7.2.7"
+    "sort-package-json": "^3.6.0",
+    "@vitest/browser-playwright": "^4.0.16",
+    "@vitest/coverage-istanbul": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
+    "vitest": "^4.0.16",
+    "vite": "^7.3.0"
   },
   "publishConfig": {
     "access": "public"
