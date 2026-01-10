@@ -25,6 +25,7 @@ const baseConfig = [
       sourceType: 'module',
       globals: {
         ...globals.browser,
+        ...globals.es2023,
         ...globals.mocha,
       },
     },

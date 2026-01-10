@@ -9,11 +9,11 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
-      "es2022",
+      "es2023",
       "DOM",
       "DOM.Iterable"
     ],
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "Bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -29,7 +29,7 @@
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "es2022",
+    "target": "es2023",
     "types": [
       "mocha"
     ],
