@@ -1,9 +1,81 @@
 import prompts from 'prompts';
 import {spawn} from 'child_process';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import _Generator from '@open-wc/create/dist/Generator.js';
 import {writeFilesToDisk} from '@open-wc/create/dist/core.js';
 
 const isWindows = process.platform === 'win32';
+
+/**
+ * Normalizes cwd values to a valid absolute path.
+ *
+ * On Windows this also guards against a common ESM file-URL pitfall where
+ * `.pathname` yields values like `/C:/Users/...` which can become `C:\\C:\\...`
+ * after `path.resolve()`.
+ *
+ * @param {string | URL | undefined} maybePath
+ */
+function normalizeCwd(maybePath) {
+  if (!maybePath || maybePath === 'auto') {
+    return process.cwd();
+  }
+
+  /** @type {string} */
+  let cwd;
+
+  if (maybePath instanceof URL) {
+    cwd = fileURLToPath(maybePath);
+  } else if (typeof maybePath === 'string' && maybePath.startsWith('file:')) {
+    cwd = fileURLToPath(new URL(maybePath));
+  } else {
+    cwd = String(maybePath);
+  }
+
+  if (isWindows) {
+    // Fix paths like "/C:/Users/..." or "\\C:\\Users...".
+    cwd = cwd.replace(/^[/\\]([A-Za-z]:[\\/])/, '$1');
+
+    // Best-effort support for MSYS-style paths like "/c/Users/...".
+    cwd = cwd.replace(/^\/([A-Za-z])\/(.*)/, (_, driveLetter, rest) => {
+      const drive = String(driveLetter).toUpperCase();
+      return `${drive}:\\${String(rest).replace(/\//g, '\\')}`;
+    });
+  }
+
+  return path.resolve(cwd);
+}
+
+/**
+ * Spawns a command in a way that works reliably on Windows.
+ * - On Windows we run via cmd.exe (/c) to support .cmd/.bat shims (npm, pnpm, etc)
+ * - We also normalize cwd when generator uses destinationPath='auto'
+ *
+ * @param {string} command
+ * @param {string[]} args
+ * @param {import('child_process').SpawnOptions} options
+ */
+function spawnCommand(command, args, options = {}) {
+  const cwd = normalizeCwd(options.cwd);
+  const spawnOptions = {
+    ...options,
+    cwd,
+    stdio: 'inherit',
+  };
+
+  if (isWindows) {
+    const comspec = process.env.comspec || 'cmd.exe';
+    // Use windowsVerbatimArguments to prevent Node.js from escaping our already escaped command.
+    // Wrap command and args in an extra set of quotes for cmd.exe /c
+    const fullCommand = [command, ...args].join(' ');
+    return spawn(comspec, ['/d', '/s', '/c', `"${fullCommand}"`], {
+      ...spawnOptions,
+      windowsVerbatimArguments: true,
+    });
+  }
+
+  return spawn(command, args, spawnOptions);
+}
 
 /**
  * @param {string} command
@@ -11,16 +83,25 @@ const isWindows = process.platform === 'win32';
  */
 function _install(command = 'npm', options = {}) {
   return new Promise((resolve, reject) => {
-    const cmdCommand = isWindows ? `${command}.cmd` : command;
+    let child;
+    try {
+      child = spawnCommand(command, ['install'], options);
+    } catch (error) {
+      reject(error);
+      return;
+    }
 
-    const install = spawn(cmdCommand, ['install'], {
-      ...options,
-      stdio: 'inherit',
+    child.on('error', (error) => {
+      const cwd = normalizeCwd(options.cwd);
+      reject(new Error(`Failed to run ${command} install in ${cwd}: ${error.message}`));
     });
 
-    install.on('close', (code) => {
-      if (code === 0) resolve();
-      else reject(new Error(`${command} install failed with code ${code}`));
+    child.on('close', (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`${command} install failed with code ${code}`));
+      }
     });
   });
 }
@@ -44,8 +125,8 @@ export async function installNpm(where, command) {
  * @property {string} [tagName] the dash-case tag name
  * @property {string} [destinationPath='auto'] path to output to. default value 'auto' will output to current working directory
  * @property {'scaffold'} [type='scaffold'] path to output to. default value 'auto' will output to current working directory
- * @property {'true'|'false'} [writeToDisk] whether to write to disk
- * @property {'yarn'|'npm'|'false'} [installDependencies] whether and with which tool to install dependencies
+ * @property {'true'|'false'} [writeToDisk] whether to disk
+ * @property {'npm'|'pnpm'|'false'} [installDependencies] whether and with which tool to install dependencies
  */
 class Generator extends _Generator.default {
   constructor() {
@@ -85,18 +166,31 @@ class Generator extends _Generator.default {
         await installNpm(this.options.destinationPath, installDependencies);
 
         await new Promise((resolve, reject) => {
-          const cmdInstallDependencies = isWindows
-            ? `${installDependencies}.cmd`
-            : installDependencies;
+          let child;
+          try {
+            child = spawnCommand(installDependencies, ['run', 'analyze'], {
+              cwd: this.options.destinationPath,
+            });
+          } catch (error) {
+            reject(error);
+            return;
+          }
 
-          const install = spawn(cmdInstallDependencies, ['run', 'analyze'], {
-            cwd: this.options.destinationPath,
-            stdio: 'inherit',
+          child.on('error', (error) => {
+            const cwd = normalizeCwd(this.options.destinationPath);
+            reject(
+              new Error(
+                `Failed to run ${installDependencies} run analyze in ${cwd}: ${error.message}`
+              )
+            );
           });
 
-          install.on('close', (code) => {
-            if (code === 0) resolve();
-            else reject(new Error(`${installDependencies} run analyze failed`));
+          child.on('close', (code) => {
+            if (code === 0) {
+              resolve();
+            } else {
+              reject(new Error(`${installDependencies} run analyze failed`));
+            }
           });
         });
       }
