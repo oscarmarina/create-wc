@@ -81,11 +81,17 @@ function spawnCommand(command, args, options = {}) {
  * @param {string} command
  * @param {object} options
  */
-function _install(command = 'npm', options = {}) {
+/**
+ * @param {string} command
+ * @param {string[]} args
+ * @param {object} options
+ * @param {string} errorAction - description of action for error message
+ */
+function runTask(command, args, options, errorAction) {
   return new Promise((resolve, reject) => {
     let child;
     try {
-      child = spawnCommand(command, ['install'], options);
+      child = spawnCommand(command, args, options);
     } catch (error) {
       reject(error);
       return;
@@ -93,17 +99,25 @@ function _install(command = 'npm', options = {}) {
 
     child.on('error', (error) => {
       const cwd = normalizeCwd(options.cwd);
-      reject(new Error(`Failed to run ${command} install in ${cwd}: ${error.message}`));
+      reject(new Error(`Failed to ${errorAction} in ${cwd}: ${error.message}`));
     });
 
     child.on('close', (code) => {
       if (code === 0) {
         resolve();
       } else {
-        reject(new Error(`${command} install failed with code ${code}`));
+        reject(new Error(`${command} ${args.join(' ')} failed with code ${code}`));
       }
     });
   });
+}
+
+/**
+ * @param {string} command
+ * @param {object} options
+ */
+function _install(command = 'npm', options = {}) {
+  return runTask(command, ['install'], options, `run ${command} install`);
 }
 
 /**
@@ -165,34 +179,12 @@ class Generator extends _Generator.default {
       if (installDependencies === 'pnpm' || installDependencies === 'npm') {
         await installNpm(this.options.destinationPath, installDependencies);
 
-        await new Promise((resolve, reject) => {
-          let child;
-          try {
-            child = spawnCommand(installDependencies, ['run', 'analyze'], {
-              cwd: this.options.destinationPath,
-            });
-          } catch (error) {
-            reject(error);
-            return;
-          }
-
-          child.on('error', (error) => {
-            const cwd = normalizeCwd(this.options.destinationPath);
-            reject(
-              new Error(
-                `Failed to run ${installDependencies} run analyze in ${cwd}: ${error.message}`
-              )
-            );
-          });
-
-          child.on('close', (code) => {
-            if (code === 0) {
-              resolve();
-            } else {
-              reject(new Error(`${installDependencies} run analyze failed`));
-            }
-          });
-        });
+        await runTask(
+          installDependencies,
+          ['run', 'analyze'],
+          {cwd: this.options.destinationPath},
+          `run ${installDependencies} run analyze`
+        );
       }
     }
   }
