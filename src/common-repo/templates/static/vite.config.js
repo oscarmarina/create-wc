@@ -29,7 +29,7 @@ const entries = Object.fromEntries(
 // https://vitejs.dev/config/
 // https://vite-rollup-plugins.patak.dev/
 
-export default defineConfig({
+export default defineConfig(({command}) => ({
   test: {
     onConsoleLog(log, type) {
       if (type === 'stderr' && log.includes('in dev mode')) {
@@ -72,7 +72,7 @@ export default defineConfig({
       exclude: ['**/src/**/index.*', '**/src/styles/'],
     },
   },
-  plugins: [copy(copyConfig), totalBundlesize()],
+  plugins: [...(command === 'build' ? [copy(copyConfig), totalBundlesize()] : [])],
   optimizeDeps: {
     exclude: ['lit', 'lit-html'],
   },
@@ -89,4 +89,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
