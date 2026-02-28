@@ -68,22 +68,22 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@html-eslint/eslint-plugin": "^0.54.2",
-    "@html-eslint/parser": "^0.54.0",
-    "eslint": "^9.39.2",
+    "@eslint/js": "^9.39.3",
+    "@html-eslint/eslint-plugin": "^0.57.1",
+    "@html-eslint/parser": "^0.57.1",
+    "eslint": "^9.39.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-html": "^8.1.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-lit": "^2.2.1",
     "eslint-plugin-lit-a11y": "^5.1.1",
     "eslint-plugin-wc": "^3.1.0",
-    "typescript-eslint": "^8.55.0",
+    "typescript-eslint": "^8.56.1",
     "globals": "^17.3.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
+    "lint-staged": "^16.3.0",
     "prettier": "^3.8.1",
-    "stylelint": "^17.2.0",
+    "stylelint": "^17.4.0",
     "stylelint-config-standard-scss": "^17.0.0"
   }
 }
