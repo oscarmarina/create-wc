@@ -33,7 +33,7 @@
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@open-wc/semantic-dom-diff": "^0.20.1",
     "@open-wc/testing-helpers": "^3.0.1",
-    "playwright": "^1.58.2",
+    "playwright": "^1.59.1",
     "postcss-html": "^1.8.1",
     "postcss-lit": "^1.4.1",
     "@types/mocha": "^10.0.10",
