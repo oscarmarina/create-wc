@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "2.10.2",
+  "version": "2.11.0",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "Lit",
@@ -58,7 +58,7 @@
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.8.1",
-    "globals": "^17.4.0"
+    "globals": "^17.5.0"
   },
   "engines": {
     "node": ">=18.20.3"
