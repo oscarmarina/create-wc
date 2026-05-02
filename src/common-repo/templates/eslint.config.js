@@ -193,7 +193,7 @@ const htmlFilesRules = {
   rules: {
     '@html-eslint/indent': 'off',
     '@html-eslint/require-closing-tags': 'off',
-    '@html-eslint/no-extra-spacing-attrs': 'off',
+    '@html-eslint/no-extra-spacing-tags': 'off',
     '@html-eslint/attrs-newline': 'off',
   },
 };
