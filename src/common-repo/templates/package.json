@@ -48,7 +48,7 @@
     "@vitest/coverage-v8": "^4.1.5",
     "@vitest/ui": "^4.1.5",
     "vitest": "^4.1.5",
-    "vite": "^8.0.10"
+    "vite": "^8.0.11"
   },
   "publishConfig": {
     "access": "public"
