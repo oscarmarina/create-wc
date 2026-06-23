@@ -13,7 +13,7 @@
     "strict": false,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*.js"]
 }

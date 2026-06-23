@@ -8,11 +8,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "es2023",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["es2023", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "moduleResolution": "Bundler",
     "noFallthroughCasesInSwitch": true,
@@ -30,13 +26,9 @@
     "strict": true,
     "stripInternal": true,
     "target": "es2023",
-    "types": [
-      "mocha"
-    ],
+    "types": ["mocha"],
     "useDefineForClassFields": false,
     "verbatimModuleSyntax": true
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }
