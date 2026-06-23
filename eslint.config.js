@@ -1,36 +1,47 @@
 import js from '@eslint/js';
-import openwcEslintConfig from '@open-wc/eslint-config';
-import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 
 export default [
   {
-    ignores: ['**/src/*/templates/**/*.js'],
+    ignores: [
+      '**/.idea',
+      '**/.tmp',
+      '**/.vscode',
+      '**/.wireit',
+      '**/_site',
+      '**/build',
+      '**/coverage',
+      '**/dev',
+      '**/dist',
+      '**/reports',
+      '**/storybook-static',
+      '**/*screenshots*',
+      '**/*snapshots*',
+      'src/**/templates/**',
+      '**/*.config.*',
+      '**/*.d.ts',
+      '**/*.min.js',
+      '**/*.workspace.*',
+    ],
   },
-  js.configs.recommended,
-  ...openwcEslintConfig,
-  eslintConfigPrettier,
   {
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        ...globals.node,
+        ...globals.browser,
+        ...globals.es2023,
+        ...globals.mocha,
       },
     },
   },
   {
-    files: ['**/src/**/*.html'],
-    rules: {
-      'import-x/no-unresolved': 'off',
+    files: ['src/create.js', 'src/Generator.js', 'src/app/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
-  {
-    files: ['**/test/**/*.js', '**/*.config.js'],
-    rules: {
-      'no-console': 'off',
-      'no-unused-expressions': 'off',
-      'max-classes-per-file': 'off',
-    },
-  },
+  js.configs.recommended,
 ];
