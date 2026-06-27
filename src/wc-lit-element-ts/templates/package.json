@@ -26,7 +26,8 @@
     "/dist/"
   ],
   "scripts": {
-    "build": "npm run dev:vite && npm run build:lib && npm run build:tsc",
+    "build": "npm run build:lib && npm run build:tsc",
+    "build:demo": "npm run dev:vite",
     "build:lib": "vite build --config vite.lib.config.js",
     "build:tsc": "tsc",
     "sass:watch": "sass-style-template -j ts"
