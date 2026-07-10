@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "2.13.0",
+  "version": "2.14.0",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "Lit",
@@ -30,17 +30,21 @@
     "start": "node ./src/create.js"
   },
   "prettier": {
-    "bracketSameLine": true,
-    "htmlWhitespaceSensitivity": "ignore",
-    "singleQuote": true,
     "bracketSpacing": false,
-    "trailingComma": "es5",
     "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5",
     "overrides": [
       {
         "files": "*.{scss,css}",
         "options": {
           "singleQuote": false
+        }
+      },
+      {
+        "files": "*.json",
+        "options": {
+          "parser": "json-stringify"
         }
       }
     ]
@@ -57,8 +61,8 @@
     "@open-wc/eslint-config": "^13.1.0",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.9.0",
-    "globals": "^17.7.0"
+    "globals": "^17.7.0",
+    "prettier": "^3.9.4"
   },
   "publishConfig": {
     "access": "public"
