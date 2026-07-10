@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    // https://humanwhocodes.com/snippets/2020/10/create-typescript-declarations-from-javascript-jsdoc/
     "target": "es2021",
-    "lib": ["es2021", "DOM", "DOM.Iterable"],
+    "lib": [
+      "es2021",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "es2020",
     "moduleResolution": "node",
     "allowJs": true,
@@ -15,5 +18,7 @@
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.js"]
+  "include": [
+    "src/**/*.js"
+  ]
 }

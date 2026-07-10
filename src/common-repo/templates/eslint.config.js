@@ -9,7 +9,6 @@ import htmlEslintParser from '@html-eslint/parser';
 import eslintPluginHtml from 'eslint-plugin-html';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
-import path from 'node:path';
 
 const fileTypes = '{js,ts,mjs}';
 

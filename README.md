@@ -163,3 +163,4 @@ The repository itself is intentionally small: it assembles mixins and templates 
 
 - [rollup-plugin-total-bundlesize](https://github.com/oscarmarina/rollup-plugin-total-bundlesize)
 - [vite-plugin-prevent-rewrite-imports-type-module](https://github.com/oscarmarina/vite-plugin-prevent-rewrite-imports-type-module/tree/main)
+- [Create TypeScript Declarations from JavaScript JSDoc](https://humanwhocodes.com/snippets/2020/10/create-typescript-declarations-from-javascript-jsdoc/)

@@ -1,7 +1,7 @@
 import {defineConfig} from 'vitest/config';
 import {playwright} from '@vitest/browser-playwright';
 import {globSync} from 'tinyglobby';
-import copy from 'rollup-plugin-copy';
+import {viteStaticCopy} from 'vite-plugin-static-copy';
 import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 
 const OUT_DIR = 'dev';
@@ -13,10 +13,10 @@ const copyConfig = {
   targets: [
     {
       src: [`${ENTRIES_DIR}/**/*.*`, `!${ENTRIES_GLOB}`],
-      dest: OUT_DIR,
+      dest: '.',
+      rename: {stripBase: 1},
     },
   ],
-  hook: 'writeBundle',
 };
 
 // https://github.com/vitejs/vite/discussions/1736#discussioncomment-5126923
@@ -43,7 +43,6 @@ const entries = (() => {
 
   return Object.fromEntries(map);
 })();
-
 
 // https://vitejs.dev/config/
 // https://vite-rollup-plugins.patak.dev/
@@ -97,7 +96,7 @@ export default defineConfig(({command}) => ({
       exclude: ['**/src/**/index.*', '**/src/styles/'],
     },
   },
-  plugins: [copy(copyConfig), totalBundlesize()],
+  plugins: command === 'build' ? [viteStaticCopy(copyConfig), totalBundlesize()] : [],
   optimizeDeps: {
     exclude: ['lit', 'lit-html'],
   },

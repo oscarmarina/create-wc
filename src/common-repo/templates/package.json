@@ -7,20 +7,19 @@
     "web-component",
     "lit-element"
   ],
-  "author": "<%= tagName %>",
   "license": "MIT",
-  "customElements": "custom-elements.json",
+  "author": "<%= tagName %>",
   "type": "module",
   "scripts": {
-    "start": "concurrently -k -r \"npm:vite\" \"npm:sass:watch\"",
-    "vite": "vite",
-    "dev:vite": "vite build",
-    "preview:vite": "vite preview",
     "analyze": "cem analyze --litelement --globs \"src/**/*.{js,ts}\" \"index.js\"",
-    "sort:package": "npx sort-package-json",
+    "dev:vite": "vite build",
     "prepare": "husky",
+    "preview:vite": "vite preview",
+    "sort:package": "npx sort-package-json",
+    "start": "concurrently -k -r \"npm:vite\" \"npm:sass:watch\"",
     "test": "vitest",
-    "test:watch": "vitest --browser.headless=false"
+    "test:watch": "vitest --browser.headless=false",
+    "vite": "vite"
   },
   "dependencies": {
     "lit": "^3.3.3"
@@ -32,24 +31,25 @@
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@open-wc/semantic-dom-diff": "^0.20.1",
     "@open-wc/testing-helpers": "^3.0.1",
+    "@types/mocha": "^10.0.10",
+    "@vitest/browser-playwright": "^4.1.10",
+    "@vitest/coverage-istanbul": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/ui": "^4.1.10",
+    "chai-a11y-axe": "^1.5.0",
+    "concurrently": "^10.0.3",
     "playwright": "^1.61.1",
     "postcss-html": "^1.8.1",
     "postcss-lit": "^1.4.1",
-    "@types/mocha": "^10.0.10",
-    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-node-externals": "^9.0.1",
-    "tinyglobby": "^0.2.17",
-    "chai-a11y-axe": "^1.5.0",
-    "concurrently": "^10.0.3",
     "sort-package-json": "^4.0.0",
-    "@vitest/browser-playwright": "^4.1.9",
-    "@vitest/coverage-istanbul": "^4.1.9",
-    "@vitest/coverage-v8": "^4.1.9",
-    "@vitest/ui": "^4.1.9",
-    "vitest": "^4.1.9",
-    "vite": "^8.1.0"
+    "tinyglobby": "^0.2.17",
+    "vite": "^8.1.4",
+    "vite-plugin-static-copy": "^4.1.1",
+    "vitest": "^4.1.10"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "customElements": "custom-elements.json"
 }
