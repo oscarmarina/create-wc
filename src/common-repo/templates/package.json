@@ -29,7 +29,7 @@
     "@blockquote/rollup-plugin-total-bundlesize": "^2.4.0",
     "@blockquote/sass-style-template": "^5.1.1",
     "@custom-elements-manifest/analyzer": "^0.11.0",
-    "@open-wc/semantic-dom-diff": "^0.20.1",
+    "@open-wc/semantic-dom-diff": "^0.21.0",
     "@open-wc/testing-helpers": "^3.0.1",
     "@types/mocha": "^10.0.10",
     "@vitest/browser-playwright": "^4.1.10",
