@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/create-wc",
-  "version": "2.14.1",
+  "version": "2.14.2",
   "description": "Web component with Lit scaffolding - Extending Open Web Component",
   "keywords": [
     "Lit",
@@ -49,9 +49,12 @@
       }
     ]
   },
+  "overrides": {
+    "brace-expansion": "^5.0.8"
+  },
   "dependencies": {
     "@open-wc/create": "^0.38.151",
-    "chalk": "^5.6.2",
+    "chalk": "^6.0.0",
     "command-line-args": "^6.0.2",
     "prompts": "^2.4.2",
     "semver": "^7.8.5"
@@ -59,10 +62,10 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@open-wc/eslint-config": "^13.1.0",
-    "eslint": "^10.7.0",
+    "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
-    "globals": "^17.7.0",
-    "prettier": "^3.9.4"
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6"
   },
   "publishConfig": {
     "access": "public"
