@@ -32,6 +32,7 @@
     "@open-wc/semantic-dom-diff": "^0.21.0",
     "@open-wc/testing-helpers": "^3.0.1",
     "@types/mocha": "^10.0.10",
+    "@types/node": "^26.2.0",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-istanbul": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
