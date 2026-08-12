@@ -13,13 +13,17 @@ describe('<%= className %>', () => {
    * @type {import('../src/index').<%= className %>}
    */
   let el;
+
+  /** @type {string} */
   let elShadowRoot;
+
+  /** @type {ReturnType<typeof utils.getElementLocatorSelectors>} */
   let elLocator;
 
   describe('Semantic Dom and a11y', () => {
     beforeAll(async () => {
       el = await fixture(html`<<%= tagName %>>light-dom</<%= tagName %>>`);
-      elShadowRoot = el?.shadowRoot?.innerHTML;
+      elShadowRoot = el?.shadowRoot?.innerHTML ?? '';
       elLocator = utils.getElementLocatorSelectors(el);
     });
 
@@ -60,6 +64,9 @@ describe('<%= className %>', () => {
     it('should increment value on click', async () => {
       const button = elLocator.getByText('Counter: 5');
       const elButton = button.query();
+      if (!elButton) {
+        throw new Error('Button not found');
+      }
       await button.dblClick();
       await el.updateComplete;
       expect(elButton.textContent).toContain('Counter: 7');
