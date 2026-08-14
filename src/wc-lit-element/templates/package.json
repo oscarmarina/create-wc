@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "build": "echo \"This is not a TypeScript project, so no need to build.\"",
-    "build:demo": "npm run dev:vite",
+    "build:demo": "vite build",
     "sass:watch": "sass-style-template"
   }
 }

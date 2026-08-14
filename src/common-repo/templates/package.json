@@ -12,7 +12,6 @@
   "type": "module",
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"src/**/*.{js,ts}\" \"index.js\"",
-    "dev:vite": "vite build",
     "prepare": "husky",
     "preview:vite": "vite preview",
     "sort:package": "npx sort-package-json",

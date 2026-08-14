@@ -27,9 +27,9 @@
   ],
   "scripts": {
     "build": "npm run build:lib && npm run build:tsc",
-    "build:demo": "npm run dev:vite",
+    "build:demo": "vite build",
     "build:lib": "vite build --config vite.lib.config.js",
-    "build:tsc": "tsc",
+    "build:tsc": "tsc --project ./tsconfig.build.json",
     "sass:watch": "sass-style-template -j ts"
   },
   "devDependencies": {
