@@ -68,12 +68,12 @@
     ]
   },
   "devDependencies": {
-    "@blockquote/eslint-config": "^0.1.2",
-    "eslint": "^10.9.1",
+    "@blockquote/eslint-config": "^0.1.9",
+    "eslint": "^10.11.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.4.1",
-    "prettier": "^3.9.6",
-    "stylelint": "^17.14.1",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.9",
+    "stylelint": "^17.15.0",
     "stylelint-config-standard-scss": "^17.0.0"
   }
 }
