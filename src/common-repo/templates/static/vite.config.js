@@ -60,6 +60,7 @@ export default defineConfig(({command}) => ({
     browser: {
       enabled: true,
       headless: true,
+      trace: 'off',
       provider: playwright(),
       screenshotFailures: false,
       instances: [
@@ -67,12 +68,7 @@ export default defineConfig(({command}) => ({
           browser: 'chromium',
           provider: playwright({
             launchOptions: {
-              args: [
-                '--auto-open-devtools-for-tabs',
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-gpu',
-              ],
+              args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
             },
           }),
         },

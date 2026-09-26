@@ -31,11 +31,17 @@ describe('<%= className %>', () => {
       fixtureCleanup();
     });
 
-    it('has a default heading "Hey there" and counter 5', () => {
-      const button = elLocator.getByText('Counter: 5').query();
-      const heading = elLocator.getByText('Hey there').query();
-      expect(button).toBeTruthy();
-      expect(heading).toBeTruthy();
+    it('has a default heading "Hey there" and counter 5', async () => {
+      const heading = elLocator.getByRole('heading', {
+        level: 1,
+        name: 'Hello, Hey there!',
+      });
+      const button = elLocator.getByRole('button', {
+        name: 'Counter: 5',
+      });
+
+      await expect.element(heading).toHaveAccessibleName('Hello, Hey there!');
+      await expect.element(button).toHaveAccessibleName('Counter: 5');
     });
 
     it('SHADOW DOM - Structure test', () => {
@@ -62,19 +68,15 @@ describe('<%= className %>', () => {
     });
 
     it('should increment value on click', async () => {
-      const button = elLocator.getByText('Counter: 5');
-      const elButton = button.query();
-      if (!elButton) {
-        throw new Error('Button not found');
-      }
+      const button = elLocator.getByRole('button');
+      await expect.element(button).toHaveAccessibleName('Counter: 5');
       await button.dblClick();
-      await el.updateComplete;
-      expect(elButton.textContent).toContain('Counter: 7');
+      await expect.element(button).toHaveAccessibleName('Counter: 7');
     });
 
     it('counterchange event is dispatched - vi', async () => {
       const spyEvent = vi.spyOn(el, 'dispatchEvent');
-      const button = elLocator.getByText('Counter: 5');
+      const button = elLocator.getByRole('button', {name: 'Counter: 5', exact: true});
       await button.click();
       expect(spyEvent).toHaveBeenCalledWith(expect.objectContaining({type: 'counterchange'}));
     });
