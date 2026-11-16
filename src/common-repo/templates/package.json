@@ -26,7 +26,7 @@
   "devDependencies": {
     "@blockquote/cem-to-markdown-readme": "^1.0.0",
     "@blockquote/rollup-plugin-total-bundlesize": "^2.4.0",
-    "@blockquote/sass-style-template": "^5.2.0",
+    "@blockquote/sass-style-template": "^5.3.0",
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@open-wc/semantic-dom-diff": "^0.21.0",
     "@open-wc/testing-helpers": "^3.0.1",
@@ -39,7 +39,7 @@
     "chai-a11y-axe": "^1.5.0",
     "concurrently": "^10.0.7",
     "playwright": "^1.65.1",
-    "postcss-html": "^2.0.0",
+    "postcss-html": "^2.0.1",
     "postcss-lit": "^1.4.1",
     "rollup-plugin-node-externals": "^9.0.1",
     "sort-package-json": "^4.1.0",
